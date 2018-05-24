@@ -1,0 +1,8 @@
+# Version info for the converter
+
+VERSION_MAJOR = 1
+VERSION_MINOR = 0
+VERSION_MICRO = 0
+
+VERSION = str(VERSION_MAJOR) + "." + str(VERSION_MINOR) + "." + str(VERSION_MICRO)
+CPSW_YAML_SCHEMA_VERSION = "3.0.0"

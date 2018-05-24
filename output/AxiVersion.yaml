@@ -1,0 +1,130 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once AxiVersion.yaml 
+
+
+AxiVersion: &AxiVersion
+  description: AXI-Lite Version Module
+  configPrio: 1
+  class: MMIODev
+  size: 8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    BuildStamp:
+      at:
+        offset: 0x800
+        byteOrder: BE
+      description: Firmware Build String
+      class: IntField
+      sizeBits: 2048
+      mode: RO
+    ################################################################################
+    DeviceDna:
+      at:
+        offset: 0x700
+        byteOrder: BE
+      description: Xilinx Device DNA value burned into FPGA
+      class: IntField
+      sizeBits: 128
+      mode: RO
+    ################################################################################
+    DeviceId:
+      at:
+        offset: 0x500
+        byteOrder: BE
+      description: Device Identification  (configued by generic)
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    FdSerial:
+      at:
+        offset: 0x300
+        byteOrder: BE
+      description: Board ID value read from DS2411 chip
+      class: IntField
+      sizeBits: 64
+      mode: RO
+    ################################################################################
+    FpgaReload:
+      at:
+        offset: 0x104
+        byteOrder: BE
+      description: Optional Reload the FPGA from the attached PROM
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################
+    FpgaReloadAddress:
+      at:
+        offset: 0x108
+        byteOrder: BE
+      description: Reload start address
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    FpgaReloadHalt:
+      at:
+        offset: 0x100
+        byteOrder: BE
+      description: Used to halt automatic reloads via AxiVersion
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FpgaVersion:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: FPGA Firmware Version Number
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    GitHash:
+      at:
+        offset: 0x600
+        byteOrder: BE
+      description: GIT SHA-1 Hash
+      class: IntField
+      sizeBits: 160
+      mode: RO
+    ################################################################################
+    ScratchPad:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: Register to test reads and writes
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    UpTimeCnt:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Number of seconds since last reset
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    UserReset:
+      at:
+        offset: 0x10c
+        byteOrder: BE
+      description: Optional User Reset
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
