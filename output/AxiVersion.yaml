@@ -15,73 +15,10 @@ AxiVersion: &AxiVersion
   description: AXI-Lite Version Module
   configPrio: 1
   class: MMIODev
-  size: 8
+  size: 0x8
   ##########
   children:
   ##########
-    ################################################################################
-    BuildStamp:
-      at:
-        offset: 0x800
-        byteOrder: BE
-      description: Firmware Build String
-      class: IntField
-      sizeBits: 2048
-      mode: RO
-    ################################################################################
-    DeviceDna:
-      at:
-        offset: 0x700
-        byteOrder: BE
-      description: Xilinx Device DNA value burned into FPGA
-      class: IntField
-      sizeBits: 128
-      mode: RO
-    ################################################################################
-    DeviceId:
-      at:
-        offset: 0x500
-        byteOrder: BE
-      description: Device Identification  (configued by generic)
-      class: IntField
-      sizeBits: 32
-      mode: RO
-    ################################################################################
-    FdSerial:
-      at:
-        offset: 0x300
-        byteOrder: BE
-      description: Board ID value read from DS2411 chip
-      class: IntField
-      sizeBits: 64
-      mode: RO
-    ################################################################################
-    FpgaReload:
-      at:
-        offset: 0x104
-        byteOrder: BE
-      description: Optional Reload the FPGA from the attached PROM
-      class: IntField
-      sizeBits: 8
-      mode: WO
-    ################################################################################
-    FpgaReloadAddress:
-      at:
-        offset: 0x108
-        byteOrder: BE
-      description: Reload start address
-      class: IntField
-      sizeBits: 32
-      mode: RW
-    ################################################################################
-    FpgaReloadHalt:
-      at:
-        offset: 0x100
-        byteOrder: BE
-      description: Used to halt automatic reloads via AxiVersion
-      class: IntField
-      sizeBits: 8
-      mode: RW
     ################################################################################
     FpgaVersion:
       at:
@@ -90,15 +27,7 @@ AxiVersion: &AxiVersion
       description: FPGA Firmware Version Number
       class: IntField
       sizeBits: 32
-      mode: RO
-    ################################################################################
-    GitHash:
-      at:
-        offset: 0x600
-        byteOrder: BE
-      description: GIT SHA-1 Hash
-      class: IntField
-      sizeBits: 160
+      lsBit: 0
       mode: RO
     ################################################################################
     ScratchPad:
@@ -108,6 +37,7 @@ AxiVersion: &AxiVersion
       description: Register to test reads and writes
       class: IntField
       sizeBits: 32
+      lsBit: 0
       mode: RW
     ################################################################################
     UpTimeCnt:
@@ -117,7 +47,35 @@ AxiVersion: &AxiVersion
       description: Number of seconds since last reset
       class: IntField
       sizeBits: 32
+      lsBit: 0
       mode: RO
+    ################################################################################
+    FpgaReloadHalt:
+      at:
+        offset: 0x100
+        byteOrder: BE
+      description: Used to halt automatic reloads via AxiVersion
+      class: IntField
+      sizeBits: 8
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    FpgaReload:
+      at:
+        offset: 0x104
+      name: FpgaReload
+      description: Optional Reload the FPGA from the attached PROM
+      class: SequenceCommand
+    ################################################################################
+    FpgaReloadAddress:
+      at:
+        offset: 0x108
+        byteOrder: BE
+      description: Reload start address
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RW
     ################################################################################
     UserReset:
       at:
@@ -126,5 +84,70 @@ AxiVersion: &AxiVersion
       description: Optional User Reset
       class: IntField
       sizeBits: 8
+      lsBit: 0
       mode: RW
+    ################################################################################
+    FdSerial:
+      at:
+        offset: 0x300
+        byteOrder: BE
+      description: Board ID value read from DS2411 chip
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    DeviceId:
+      at:
+        offset: 0x500
+        byteOrder: BE
+      description: Device Identification  (configued by generic)
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    GitHash:
+      at:
+        offset: 0x600
+        byteOrder: BE
+      description: GIT SHA-1 Hash
+      class: IntField
+      sizeBits: 160
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    DeviceDna:
+      at:
+        offset: 0x700
+        byteOrder: BE
+      description: Xilinx Device DNA value burned into FPGA
+      class: IntField
+      sizeBits: 128
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    BuildStamp:
+      at:
+        offset: 0x800
+        byteOrder: BE
+      description: Firmware Build String
+      class: IntField
+      sizeBits: 2048
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    FpgaReloadAtAddress:
+      at:
+        offset: 0x0
+      name: FpgaReloadAtAddress
+      description: 
+      class: SequenceCommand
+    ################################################################################
+    UserRst:
+      at:
+        offset: 0x0
+      name: UserRst
+      description: Toggle UserReset
+      class: SequenceCommand
     ################################################################################

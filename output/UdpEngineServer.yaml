@@ -8,11 +8,11 @@
 ## the terms contained in the LICENSE.txt file. 
 ############################################################################## 
 #schemaversion 3.0.0 
-#once UdpEngineClient.yaml 
+#once UdpEngineServer.yaml 
 
 
-UdpEngineClient: &UdpEngineClient
-  description: UdpEngineClient
+UdpEngineServer: &UdpEngineServer
+  description: UdpEngineServer
   configPrio: 1
   class: MMIODev
   size: 0x8
@@ -20,21 +20,21 @@ UdpEngineClient: &UdpEngineClient
   children:
   ##########
     ################################################################################
-    ClientRemotePortRaw:
+    ServerRemotePort:
       at:
         offset: 0x0
         byteOrder: BE
-      description: ClientRemotePort (big-Endian configuration)
+      description: ServerRemotePort (big-Endian configuration)
       class: IntField
       sizeBits: 16
-      mode: RW
+      mode: RO
     ################################################################################
-    ClientRemoteIpRaw:
+    ServerRemoteIp:
       at:
         offset: 0x4
         byteOrder: BE
-      description: ClientRemoteIp (big-Endian configuration)
+      description: ServerRemoteIp (big-Endian configuration)
       class: IntField
       sizeBits: 32
-      mode: RW
+      mode: RO
     ################################################################################

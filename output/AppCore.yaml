@@ -15,10 +15,19 @@ AppCore: &AppCore
   description: MicrowaveMux Application
   configPrio: 1
   class: MMIODev
-  size: 8
+  size: 0x8
   ##########
   children:
   ##########
+    ################################################################################
+    DacSigTrigDelay:
+      at:
+        offset: 0x3000000
+        byteOrder: BE
+      description: DacSig TrigDelay
+      class: IntField
+      sizeBits: 24
+      mode: RW
     ################################################################################
     DacSigTrigArm:
       at:
@@ -29,12 +38,10 @@ AppCore: &AppCore
       sizeBits: 8
       mode: WO
     ################################################################################
-    DacSigTrigDelay:
+    CmdDacSigTrigArm:
       at:
-        offset: 0x3000000
-        byteOrder: BE
-      description: DacSig TrigDelay
-      class: IntField
-      sizeBits: 24
-      mode: RW
+        offset: 0x0
+      name: CmdDacSigTrigArm
+      description: Arms for a DAC SIG Trigger to the DAQ MUX
+      class: SequenceCommand
     ################################################################################

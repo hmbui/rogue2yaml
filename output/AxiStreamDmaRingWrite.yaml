@@ -1,0 +1,727 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once AxiStreamDmaRingWrite.yaml 
+
+
+AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
+  description: DMA Ring Buffer Manager
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    StartAddr[0]:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    StartAddr[1]:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    StartAddr[2]:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    StartAddr[3]:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    EndAddr[0]:
+      at:
+        offset: 0x200
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    EndAddr[1]:
+      at:
+        offset: 0x208
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    EndAddr[2]:
+      at:
+        offset: 0x210
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    EndAddr[3]:
+      at:
+        offset: 0x218
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    WrAddr[0]:
+      at:
+        offset: 0x400
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    WrAddr[1]:
+      at:
+        offset: 0x408
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    WrAddr[2]:
+      at:
+        offset: 0x410
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    WrAddr[3]:
+      at:
+        offset: 0x418
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    TriggerAddr[0]:
+      at:
+        offset: 0x600
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    TriggerAddr[1]:
+      at:
+        offset: 0x608
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    TriggerAddr[2]:
+      at:
+        offset: 0x610
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    TriggerAddr[3]:
+      at:
+        offset: 0x618
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 64
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Enabled[0]:
+      at:
+        offset: 0x800
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    Enabled[1]:
+      at:
+        offset: 0x804
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    Enabled[2]:
+      at:
+        offset: 0x808
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    Enabled[3]:
+      at:
+        offset: 0x80c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    Mode[0]:
+      at:
+        offset: 0x800
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    Mode[1]:
+      at:
+        offset: 0x804
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    Mode[2]:
+      at:
+        offset: 0x808
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    Mode[3]:
+      at:
+        offset: 0x80c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    Init[0]:
+      at:
+        offset: 0x800
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    Init[1]:
+      at:
+        offset: 0x804
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    Init[2]:
+      at:
+        offset: 0x808
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    Init[3]:
+      at:
+        offset: 0x80c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SoftTrigger[0]:
+      at:
+        offset: 0x800
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    SoftTrigger[1]:
+      at:
+        offset: 0x804
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    SoftTrigger[2]:
+      at:
+        offset: 0x808
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    SoftTrigger[3]:
+      at:
+        offset: 0x80c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    MsgDest[0]:
+      at:
+        offset: 0x800
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    MsgDest[1]:
+      at:
+        offset: 0x804
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    MsgDest[2]:
+      at:
+        offset: 0x808
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    MsgDest[3]:
+      at:
+        offset: 0x80c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    FramesAfterTrigger[0]:
+      at:
+        offset: 0x800
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    FramesAfterTrigger[1]:
+      at:
+        offset: 0x804
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    FramesAfterTrigger[2]:
+      at:
+        offset: 0x808
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    FramesAfterTrigger[3]:
+      at:
+        offset: 0x80c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RW
+    ################################################################################
+    Status[0]:
+      at:
+        offset: 0xa00
+        byteOrder: BE
+      description: Include all of the status bits in one access
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Status[1]:
+      at:
+        offset: 0xa04
+        byteOrder: BE
+      description: Include all of the status bits in one access
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Status[2]:
+      at:
+        offset: 0xa08
+        byteOrder: BE
+      description: Include all of the status bits in one access
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Status[3]:
+      at:
+        offset: 0xa0c
+        byteOrder: BE
+      description: Include all of the status bits in one access
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Empty[0]:
+      at:
+        offset: 0xa00
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Empty[1]:
+      at:
+        offset: 0xa04
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Empty[2]:
+      at:
+        offset: 0xa08
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Empty[3]:
+      at:
+        offset: 0xa0c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Full[0]:
+      at:
+        offset: 0xa00
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    Full[1]:
+      at:
+        offset: 0xa04
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    Full[2]:
+      at:
+        offset: 0xa08
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    Full[3]:
+      at:
+        offset: 0xa0c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    Done[0]:
+      at:
+        offset: 0xa00
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    Done[1]:
+      at:
+        offset: 0xa04
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    Done[2]:
+      at:
+        offset: 0xa08
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    Done[3]:
+      at:
+        offset: 0xa0c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    Triggered[0]:
+      at:
+        offset: 0xa00
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    Triggered[1]:
+      at:
+        offset: 0xa04
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    Triggered[2]:
+      at:
+        offset: 0xa08
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    Triggered[3]:
+      at:
+        offset: 0xa0c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    Error[0]:
+      at:
+        offset: 0xa00
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    Error[1]:
+      at:
+        offset: 0xa04
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    Error[2]:
+      at:
+        offset: 0xa08
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    Error[3]:
+      at:
+        offset: 0xa0c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    BurstSize:
+      at:
+        offset: 0xa00
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    FramesSinceTrigger[0]:
+      at:
+        offset: 0xa00
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    FramesSinceTrigger[1]:
+      at:
+        offset: 0xa04
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    FramesSinceTrigger[2]:
+      at:
+        offset: 0xa08
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    FramesSinceTrigger[3]:
+      at:
+        offset: 0xa0c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      lsBit: 0
+      mode: RO
+    ################################################################################
+    Initialize:
+      at:
+        offset: 0x0
+      name: Initialize
+      description: Initialize the buffer. Reset the write pointer to StartAddr. Clear
+        the Done field.
+      class: SequenceCommand
+    ################################################################################
+    SoftTriggerAll:
+      at:
+        offset: 0x0
+      name: SoftTriggerAll
+      description: Send a trigger to the buffer
+      class: SequenceCommand
+    ################################################################################

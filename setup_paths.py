@@ -1,6 +1,9 @@
 import os
 import sys
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 def setup_paths():
     try:
@@ -12,7 +15,8 @@ def setup_paths():
         cryo_det_surf_python = os.environ["CRYO_DET_SURF_PYTHON"]
         cryo_det_dsp_core_lib = os.environ["CRYO_DET_DSP_CORE_LIB"]
     except KeyError as error:
-        print("You must set up the appropriate environment variables. Exception: {0}".format(error))
+        logger.error("You must set up the appropriate environment variables. Exception: {0}".format(error))
+        return
 
     sys.path.insert(1, cryo_det_dsp_core_lib)
     sys.path.insert(1, cryo_det_surf_python)

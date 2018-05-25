@@ -1,7 +1,7 @@
 # Convert a PyRogue class to YAML
 
 import logging
-logging.getLevelName("PyRogueParser")
+logger = logging.getLogger(__name__)
 
 from pydoc import locate
 from arg_parser import ArgParser
@@ -33,8 +33,10 @@ def main():
     try:
         pyrogue_device = class_rep()
     except TypeError as error:
-        print("Cannot instantiate the object of type '{0}'. Make sure you provide the correct class name and the "
-              "right Rogue Python file in the 'input' directory. Exception: {1}".format(class_name, error))
+        logger.error("Cannot instantiate the object of type '{0}'. Make sure you provide the correct class name and "
+                     "the right Rogue Python file in the 'input' directory. Exception: {1}".format(class_name, error))
+        return
+
     converter = YamlConverter(pyrogue_device)
     converter.convert('.'.join([class_name, "yaml"]))
 
