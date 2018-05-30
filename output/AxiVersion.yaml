@@ -27,7 +27,6 @@ AxiVersion: &AxiVersion
       description: FPGA Firmware Version Number
       class: IntField
       sizeBits: 32
-      lsBit: 0
       mode: RO
     ################################################################################
     ScratchPad:
@@ -37,7 +36,6 @@ AxiVersion: &AxiVersion
       description: Register to test reads and writes
       class: IntField
       sizeBits: 32
-      lsBit: 0
       mode: RW
     ################################################################################
     UpTimeCnt:
@@ -47,7 +45,6 @@ AxiVersion: &AxiVersion
       description: Number of seconds since last reset
       class: IntField
       sizeBits: 32
-      lsBit: 0
       mode: RO
     ################################################################################
     FpgaReloadHalt:
@@ -57,7 +54,6 @@ AxiVersion: &AxiVersion
       description: Used to halt automatic reloads via AxiVersion
       class: IntField
       sizeBits: 8
-      lsBit: 0
       mode: RW
     ################################################################################
     FpgaReload:
@@ -74,7 +70,6 @@ AxiVersion: &AxiVersion
       description: Reload start address
       class: IntField
       sizeBits: 32
-      lsBit: 0
       mode: RW
     ################################################################################
     UserReset:
@@ -84,7 +79,6 @@ AxiVersion: &AxiVersion
       description: Optional User Reset
       class: IntField
       sizeBits: 8
-      lsBit: 0
       mode: RW
     ################################################################################
     FdSerial:
@@ -94,7 +88,6 @@ AxiVersion: &AxiVersion
       description: Board ID value read from DS2411 chip
       class: IntField
       sizeBits: 64
-      lsBit: 0
       mode: RO
     ################################################################################
     DeviceId:
@@ -104,7 +97,6 @@ AxiVersion: &AxiVersion
       description: Device Identification  (configued by generic)
       class: IntField
       sizeBits: 32
-      lsBit: 0
       mode: RO
     ################################################################################
     GitHash:
@@ -114,7 +106,6 @@ AxiVersion: &AxiVersion
       description: GIT SHA-1 Hash
       class: IntField
       sizeBits: 160
-      lsBit: 0
       mode: RO
     ################################################################################
     DeviceDna:
@@ -124,7 +115,6 @@ AxiVersion: &AxiVersion
       description: Xilinx Device DNA value burned into FPGA
       class: IntField
       sizeBits: 128
-      lsBit: 0
       mode: RO
     ################################################################################
     BuildStamp:
@@ -134,7 +124,6 @@ AxiVersion: &AxiVersion
       description: Firmware Build String
       class: IntField
       sizeBits: 2048
-      lsBit: 0
       mode: RO
     ################################################################################
     FpgaReloadAtAddress:

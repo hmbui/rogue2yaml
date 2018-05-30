@@ -79,24 +79,35 @@ class YamlConverter:
         if remote_variables and len(remote_variables):
             self._serialized_data["__root__"]["children"] = OrderedDict()
             for _, remote_var in remote_variables.items():
+                remote_var_name = remote_var.name
+                search_index = remote_var_name.find('[')
+                if search_index >= 0:
+                    if remote_var_name[search_index:search_index + 3] == "[0]":
+                        remote_var_name = remote_var_name[0:search_index]
+                    else:
+                        # Do not output duplicate remote var names with different subscripts
+                        continue
+
                 child_data = OrderedDict()
                 child_data['#'] = '#' * 20
-                child_data[remote_var.name] = OrderedDict()
+                child_data[remote_var_name] = OrderedDict()
 
-                child_data[remote_var.name]["at"] = OrderedDict()
-                child_data[remote_var.name]["at"]["offset"] = hex(remote_var.offset)
-                child_data[remote_var.name]["at"]["byteOrder"] = YamlConverter.CHILD_DEVICE_BYTE_ORDER
+                child_data[remote_var_name]["at"] = OrderedDict()
+                child_data[remote_var_name]["at"]["offset"] = hex(remote_var.offset)
+                child_data[remote_var_name]["at"]["byteOrder"] = YamlConverter.CHILD_DEVICE_BYTE_ORDER
 
-                child_data[remote_var.name]["description"] = remote_var.description
-                child_data[remote_var.name]["class"] = YamlConverter.CHILD_DEVICE_CLASS
-                child_data[remote_var.name]["sizeBits"] = remote_var.varBytes * 8
+                child_data[remote_var_name]["description"] = remote_var.description
+                child_data[remote_var_name]["class"] = YamlConverter.CHILD_DEVICE_CLASS
+                child_data[remote_var_name]["sizeBits"] = remote_var.varBytes * 8
 
                 # Must adjust so that the value falls within the CPSW range -- [0..7]
                 ls_bit = remote_var.bitOffset[-1] if remote_var.bitOffset[-1] < 8 else remote_var.bitOffset[-1] % 8
-                child_data[remote_var.name]["lsBit"] = ls_bit
+                if ls_bit:
+                    # Since the default value is 0, only output if the ls_bit value is larger than 0
+                    child_data[remote_var_name]["lsBit"] = ls_bit
 
-                child_data[remote_var.name]["mode"] = remote_var.mode
-                child_data[remote_var.name]['##'] = '#' * 20
+                child_data[remote_var_name]["mode"] = remote_var.mode
+                child_data[remote_var_name]['##'] = '#' * 20
 
                 self._serialized_data["__root__"]["children"].update(child_data)
 
@@ -104,17 +115,19 @@ class YamlConverter:
         commands = device.commands
         if commands and len(commands):
             for _, command in commands.items():
+                command_name = command.name
+
                 child_data = OrderedDict()
                 child_data['#'] = '#' * 20
-                child_data[command.name] = OrderedDict()
-                child_data[command.name]["at"] = OrderedDict()
-                child_data[command.name]["at"]["offset"] = hex(command.offset) if hasattr(command, "offset") else \
+                child_data[command_name] = OrderedDict()
+                child_data[command_name]["at"] = OrderedDict()
+                child_data[command_name]["at"]["offset"] = hex(command.offset) if hasattr(command, "offset") else \
                     hex(YamlConverter.SEQUENCE_COMMAND_OFFSET)
 
-                child_data[command.name]["name"] = command.name
-                child_data[command.name]["description"] = command.description
-                child_data[command.name]["class"] = YamlConverter.SEQUENCE_COMMAND_CLASS
-                child_data[command.name]['##'] = '#' * 20
+                child_data[command_name]["name"] = command_name
+                child_data[command_name]["description"] = command.description
+                child_data[command_name]["class"] = YamlConverter.SEQUENCE_COMMAND_CLASS
+                child_data[command_name]['##'] = '#' * 20
 
                 self._serialized_data["__root__"]["children"].update(child_data)
 

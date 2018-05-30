@@ -17,8 +17,10 @@ from yaml_converter import YamlConverter
 def parse_arguments():
     parser = ArgParser(description="Convert a PyRogue class definition file to a CSPW YAML file.")
     parser.add_argument("class_name", help="The name of the Python class to convert to CSPW YAML.")
-    parser.add_argument("--version", action="version", version=VERSION)
-    parser.add_argument("--cpsw-schema-version", action="version", version=CPSW_YAML_SCHEMA_VERSION)
+
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--version", action="version", version=VERSION)
+    group.add_argument("--cpsw-schema-version", action="version", version=CPSW_YAML_SCHEMA_VERSION)
 
     args = parser.parse_args()
     return args

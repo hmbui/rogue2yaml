@@ -20,207 +20,52 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
   children:
   ##########
     ################################################################################
-    StartAddr[0]:
+    StartAddr:
       at:
         offset: 0x0
         byteOrder: BE
       description: 
       class: IntField
       sizeBits: 64
-      lsBit: 0
       mode: RW
     ################################################################################
-    StartAddr[1]:
-      at:
-        offset: 0x8
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    StartAddr[2]:
-      at:
-        offset: 0x10
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    StartAddr[3]:
-      at:
-        offset: 0x18
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    EndAddr[0]:
+    EndAddr:
       at:
         offset: 0x200
         byteOrder: BE
       description: 
       class: IntField
       sizeBits: 64
-      lsBit: 0
       mode: RW
     ################################################################################
-    EndAddr[1]:
-      at:
-        offset: 0x208
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    EndAddr[2]:
-      at:
-        offset: 0x210
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    EndAddr[3]:
-      at:
-        offset: 0x218
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    WrAddr[0]:
+    WrAddr:
       at:
         offset: 0x400
         byteOrder: BE
       description: 
       class: IntField
       sizeBits: 64
-      lsBit: 0
       mode: RO
     ################################################################################
-    WrAddr[1]:
-      at:
-        offset: 0x408
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    WrAddr[2]:
-      at:
-        offset: 0x410
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    WrAddr[3]:
-      at:
-        offset: 0x418
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    TriggerAddr[0]:
+    TriggerAddr:
       at:
         offset: 0x600
         byteOrder: BE
       description: 
       class: IntField
       sizeBits: 64
-      lsBit: 0
       mode: RO
     ################################################################################
-    TriggerAddr[1]:
-      at:
-        offset: 0x608
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    TriggerAddr[2]:
-      at:
-        offset: 0x610
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    TriggerAddr[3]:
-      at:
-        offset: 0x618
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 64
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    Enabled[0]:
+    Enabled:
       at:
         offset: 0x800
         byteOrder: BE
       description: 
       class: IntField
       sizeBits: 8
-      lsBit: 0
       mode: RW
     ################################################################################
-    Enabled[1]:
-      at:
-        offset: 0x804
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    Enabled[2]:
-      at:
-        offset: 0x808
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    Enabled[3]:
-      at:
-        offset: 0x80c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    Mode[0]:
+    Mode:
       at:
         offset: 0x800
         byteOrder: BE
@@ -230,37 +75,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
       lsBit: 1
       mode: RW
     ################################################################################
-    Mode[1]:
-      at:
-        offset: 0x804
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 1
-      mode: RW
-    ################################################################################
-    Mode[2]:
-      at:
-        offset: 0x808
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 1
-      mode: RW
-    ################################################################################
-    Mode[3]:
-      at:
-        offset: 0x80c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 1
-      mode: RW
-    ################################################################################
-    Init[0]:
+    Init:
       at:
         offset: 0x800
         byteOrder: BE
@@ -270,37 +85,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
       lsBit: 2
       mode: RW
     ################################################################################
-    Init[1]:
-      at:
-        offset: 0x804
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 2
-      mode: RW
-    ################################################################################
-    Init[2]:
-      at:
-        offset: 0x808
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 2
-      mode: RW
-    ################################################################################
-    Init[3]:
-      at:
-        offset: 0x80c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 2
-      mode: RW
-    ################################################################################
-    SoftTrigger[0]:
+    SoftTrigger:
       at:
         offset: 0x800
         byteOrder: BE
@@ -310,37 +95,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
       lsBit: 3
       mode: RW
     ################################################################################
-    SoftTrigger[1]:
-      at:
-        offset: 0x804
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 3
-      mode: RW
-    ################################################################################
-    SoftTrigger[2]:
-      at:
-        offset: 0x808
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 3
-      mode: RW
-    ################################################################################
-    SoftTrigger[3]:
-      at:
-        offset: 0x80c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 3
-      mode: RW
-    ################################################################################
-    MsgDest[0]:
+    MsgDest:
       at:
         offset: 0x800
         byteOrder: BE
@@ -350,157 +105,34 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
       lsBit: 4
       mode: RW
     ################################################################################
-    MsgDest[1]:
-      at:
-        offset: 0x804
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 4
-      mode: RW
-    ################################################################################
-    MsgDest[2]:
-      at:
-        offset: 0x808
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 4
-      mode: RW
-    ################################################################################
-    MsgDest[3]:
-      at:
-        offset: 0x80c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 4
-      mode: RW
-    ################################################################################
-    FramesAfterTrigger[0]:
+    FramesAfterTrigger:
       at:
         offset: 0x800
         byteOrder: BE
       description: 
       class: IntField
       sizeBits: 32
-      lsBit: 0
       mode: RW
     ################################################################################
-    FramesAfterTrigger[1]:
-      at:
-        offset: 0x804
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 32
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    FramesAfterTrigger[2]:
-      at:
-        offset: 0x808
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 32
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    FramesAfterTrigger[3]:
-      at:
-        offset: 0x80c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 32
-      lsBit: 0
-      mode: RW
-    ################################################################################
-    Status[0]:
+    Status:
       at:
         offset: 0xa00
         byteOrder: BE
       description: Include all of the status bits in one access
       class: IntField
       sizeBits: 32
-      lsBit: 0
       mode: RO
     ################################################################################
-    Status[1]:
-      at:
-        offset: 0xa04
-        byteOrder: BE
-      description: Include all of the status bits in one access
-      class: IntField
-      sizeBits: 32
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    Status[2]:
-      at:
-        offset: 0xa08
-        byteOrder: BE
-      description: Include all of the status bits in one access
-      class: IntField
-      sizeBits: 32
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    Status[3]:
-      at:
-        offset: 0xa0c
-        byteOrder: BE
-      description: Include all of the status bits in one access
-      class: IntField
-      sizeBits: 32
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    Empty[0]:
+    Empty:
       at:
         offset: 0xa00
         byteOrder: BE
       description: 
       class: IntField
       sizeBits: 8
-      lsBit: 0
       mode: RO
     ################################################################################
-    Empty[1]:
-      at:
-        offset: 0xa04
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    Empty[2]:
-      at:
-        offset: 0xa08
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    Empty[3]:
-      at:
-        offset: 0xa0c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    Full[0]:
+    Full:
       at:
         offset: 0xa00
         byteOrder: BE
@@ -510,37 +142,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
       lsBit: 1
       mode: RO
     ################################################################################
-    Full[1]:
-      at:
-        offset: 0xa04
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 1
-      mode: RO
-    ################################################################################
-    Full[2]:
-      at:
-        offset: 0xa08
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 1
-      mode: RO
-    ################################################################################
-    Full[3]:
-      at:
-        offset: 0xa0c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 1
-      mode: RO
-    ################################################################################
-    Done[0]:
+    Done:
       at:
         offset: 0xa00
         byteOrder: BE
@@ -550,37 +152,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
       lsBit: 2
       mode: RO
     ################################################################################
-    Done[1]:
-      at:
-        offset: 0xa04
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 2
-      mode: RO
-    ################################################################################
-    Done[2]:
-      at:
-        offset: 0xa08
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 2
-      mode: RO
-    ################################################################################
-    Done[3]:
-      at:
-        offset: 0xa0c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 2
-      mode: RO
-    ################################################################################
-    Triggered[0]:
+    Triggered:
       at:
         offset: 0xa00
         byteOrder: BE
@@ -590,69 +162,9 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
       lsBit: 3
       mode: RO
     ################################################################################
-    Triggered[1]:
-      at:
-        offset: 0xa04
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 3
-      mode: RO
-    ################################################################################
-    Triggered[2]:
-      at:
-        offset: 0xa08
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 3
-      mode: RO
-    ################################################################################
-    Triggered[3]:
-      at:
-        offset: 0xa0c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 3
-      mode: RO
-    ################################################################################
-    Error[0]:
+    Error:
       at:
         offset: 0xa00
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 4
-      mode: RO
-    ################################################################################
-    Error[1]:
-      at:
-        offset: 0xa04
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 4
-      mode: RO
-    ################################################################################
-    Error[2]:
-      at:
-        offset: 0xa08
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 8
-      lsBit: 4
-      mode: RO
-    ################################################################################
-    Error[3]:
-      at:
-        offset: 0xa0c
         byteOrder: BE
       description: 
       class: IntField
@@ -667,47 +179,15 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
       description: 
       class: IntField
       sizeBits: 16
-      lsBit: 0
       mode: RO
     ################################################################################
-    FramesSinceTrigger[0]:
+    FramesSinceTrigger:
       at:
         offset: 0xa00
         byteOrder: BE
       description: 
       class: IntField
       sizeBits: 32
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    FramesSinceTrigger[1]:
-      at:
-        offset: 0xa04
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 32
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    FramesSinceTrigger[2]:
-      at:
-        offset: 0xa08
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 32
-      lsBit: 0
-      mode: RO
-    ################################################################################
-    FramesSinceTrigger[3]:
-      at:
-        offset: 0xa0c
-        byteOrder: BE
-      description: 
-      class: IntField
-      sizeBits: 32
-      lsBit: 0
       mode: RO
     ################################################################################
     Initialize:
