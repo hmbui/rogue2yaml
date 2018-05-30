@@ -61,9 +61,17 @@ class YamlConverter:
         self._serialized_data["__root__"]["class"] = YamlConverter.MMIO_DEVICE_CLASS
         self._serialized_data["__root__"]["size"] = hex(YamlConverter.ROOT_DEVICE_SIZE)
 
-        self._serialize_children(self._pyrogue_device)
+        replica_count = 0
+        if hasattr(self._pyrogue_device, "_numBuffers"):
+            replica_count = self._pyrogue_device._numBuffers
 
-    def _serialize_children(self, device):
+        if replica_count:
+            self._serialized_data["__root__"]["metadata"] = OrderedDict()
+            self._serialized_data["__root__"]["metadata"]["numBuffers"] = ' '.join(['&numBuffers', str(replica_count)])
+
+        self._serialize_children(self._pyrogue_device, replica_count)
+
+    def _serialize_children(self, device, replica_count):
         """
         Serialize the Rogue device's children, i.e. remote variables and commands. Potentially recursive (if needed)
         if a remote variable can contain children.
@@ -76,13 +84,13 @@ class YamlConverter:
         """
         # Serialize Remote Variables
         remote_variables = device.getNodes(pr.RemoteVariable)
-        self._serialize_remote_variables(remote_variables)
+        self._serialize_remote_variables(remote_variables, replica_count)
 
         # Serialize Commands
         commands = device.commands
         self._serialize_commands(commands)
 
-    def _serialize_remote_variables(self, remote_variables):
+    def _serialize_remote_variables(self, remote_variables, replica_count):
         """
         Serialize just the remote variables.
 
@@ -109,6 +117,8 @@ class YamlConverter:
 
                 child_data[remote_var_name]["at"] = OrderedDict()
                 child_data[remote_var_name]["at"]["offset"] = hex(remote_var.offset)
+                if replica_count:
+                    child_data[remote_var_name]["at"]["nelms"] = "*numBuffers"
                 child_data[remote_var_name]["at"]["byteOrder"] = YamlConverter.CHILD_DEVICE_BYTE_ORDER
 
                 child_data[remote_var_name]["description"] = remote_var.description
