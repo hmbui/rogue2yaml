@@ -16,6 +16,8 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
   configPrio: 1
   class: MMIODev
   size: 0x8
+  metadata:
+    numBuffers: &numBuffers 4
   ##########
   children:
   ##########
@@ -23,6 +25,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     StartAddr:
       at:
         offset: 0x0
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -32,6 +35,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     EndAddr:
       at:
         offset: 0x200
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -41,6 +45,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     WrAddr:
       at:
         offset: 0x400
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -50,6 +55,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     TriggerAddr:
       at:
         offset: 0x600
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -59,6 +65,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     Enabled:
       at:
         offset: 0x800
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -68,6 +75,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     Mode:
       at:
         offset: 0x800
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -78,6 +86,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     Init:
       at:
         offset: 0x800
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -88,6 +97,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     SoftTrigger:
       at:
         offset: 0x800
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -98,6 +108,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     MsgDest:
       at:
         offset: 0x800
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -108,6 +119,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     FramesAfterTrigger:
       at:
         offset: 0x800
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -117,6 +129,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     Status:
       at:
         offset: 0xa00
+        nelms: *numBuffers
         byteOrder: BE
       description: Include all of the status bits in one access
       class: IntField
@@ -126,6 +139,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     Empty:
       at:
         offset: 0xa00
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -135,6 +149,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     Full:
       at:
         offset: 0xa00
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -145,6 +160,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     Done:
       at:
         offset: 0xa00
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -155,6 +171,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     Triggered:
       at:
         offset: 0xa00
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -165,6 +182,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     Error:
       at:
         offset: 0xa00
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -175,6 +193,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     BurstSize:
       at:
         offset: 0xa00
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
@@ -184,6 +203,7 @@ AxiStreamDmaRingWrite: &AxiStreamDmaRingWrite
     FramesSinceTrigger:
       at:
         offset: 0xa00
+        nelms: *numBuffers
         byteOrder: BE
       description: 
       class: IntField
