@@ -82,9 +82,10 @@ class YamlConverter:
                 remote_var_name = remote_var.name
                 search_index = remote_var_name.find('[')
                 if search_index >= 0:
-                    if remote_var_name[search_index : search_index + 3] == "[0]":
-                        remote_var_name = remote_var_name[0 : search_index]
+                    if remote_var_name[search_index:search_index + 3] == "[0]":
+                        remote_var_name = remote_var_name[0:search_index]
                     else:
+                        # Do not output duplicate remote var names with different subscripts
                         continue
 
                 child_data = OrderedDict()
