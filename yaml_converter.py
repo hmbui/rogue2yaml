@@ -76,6 +76,21 @@ class YamlConverter:
         """
         # Serialize Remote Variables
         remote_variables = device.getNodes(pr.RemoteVariable)
+        self._serialize_remote_variables(remote_variables)
+
+        # Serialize Commands
+        commands = device.commands
+        self._serialize_commands(commands)
+
+    def _serialize_remote_variables(self, remote_variables):
+        """
+        Serialize just the remote variables.
+
+        Parameters
+        ----------
+        remote_variables : OrderedDict
+            An ordered dictionary of remote variables for a Rogue device.
+        """
         if remote_variables and len(remote_variables):
             self._serialized_data["__root__"]["children"] = OrderedDict()
             for _, remote_var in remote_variables.items():
@@ -111,8 +126,15 @@ class YamlConverter:
 
                 self._serialized_data["__root__"]["children"].update(child_data)
 
-        # Serialize Commands
-        commands = device.commands
+    def _serialize_commands(self, commands):
+        """
+        Serialize just the commands.
+
+        Parameters
+        ----------
+        commands : OrderedDict
+            An ordered dictionary of commands for a Rogue device.
+        """
         if commands and len(commands):
             for _, command in commands.items():
                 command_name = command.name
