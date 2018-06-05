@@ -1,8 +1,8 @@
 import argparse
 import sys
 
-import logging
-logger = logging.getLogger("PyRogueParser")
+from converter_logging import logging
+logger = logging.getLogger(__name__)
 
 
 class ArgParser(argparse.ArgumentParser):
