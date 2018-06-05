@@ -3,6 +3,7 @@
 import sys
 import os
 import shutil
+import json
 from collections import OrderedDict
 
 from pydoc import locate, ErrorDuringImport
@@ -46,22 +47,16 @@ def main():
     sys.path.insert(1, os.path.expandvars(os.path.expanduser(rogue_python_file_dir)))
 
     success_files = []
-    failure_files = OrderedDict()
-    failure_files["TopLevel"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
-    failure_files["FpgaTopLevel"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
-    failure_files["TopLevel"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
-    failure_files["_spiCryo"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
-    failure_files["_spiMax"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
+    with open (os.path.join("settings", "exclusions.json"), 'r') as exclusion_file:
+        failure_files = json.load(exclusion_file)
+
+    exclusion_list = []
+    for k, _ in failure_files.items():
+        exclusion_list.append(k)
 
     for root, directories, filenames in os.walk(os.path.expanduser(rogue_python_file_dir)):
         for filename in filenames:
-            if filename[-3:] == ".py" and filename[:-3] not in (
-                    "__init__",
-                    "TopLevel",
-                    "FpgaTopLevel",
-                    "_spiCryo",
-                    "_spiMax",
-            ):
+            if filename[-3:] == ".py" and filename[:-3] not in exclusion_list:
                 shutil.copyfile(os.path.join(root, filename), os.path.join("input", filename))
 
     for _, _, filenames in os.walk("input"):
@@ -72,7 +67,20 @@ def main():
 
             if class_name[0] == '_':
                 class_name = class_name[1:]
-            class_rep = locate('.'.join(["input", filename, class_name]))
+
+            class_rep = None
+            trial_count = 0
+
+            original_class_name = class_name
+            output = _generate_class_name_variations(original_class_name)
+
+            while not class_rep and trial_count < 2 ** len(class_name):
+                class_name = next(output)
+                logger.debug("Trying class name variation '{0}'...".format(class_name))
+
+                class_rep = locate('.'.join(["input", filename, class_name]))
+                if not class_rep:
+                    trial_count += 1
             try:
                 pyrogue_device = class_rep()
 
@@ -109,11 +117,37 @@ def main():
     logger.info(''.join(['\n', "#" * 80, '\n']))
 
 
+def _generate_class_name_variations(class_name):
+    """
+    Attempt to guess the class name by varying the capitalization of character combos in the class name string.
+
+    Parameters
+    ----------
+    class_name : str
+        The name of a Python Rogue class
+
+    Yields : str
+    -------
+        The next name with the next capitalization variation
+    """
+    if class_name is not None:
+        class_name_length = len(class_name)
+        for value in range(0, 2 ** class_name_length):
+            bit_pattern = [value >> i & 1 for i in range(class_name_length - 1, -1, -1)]
+            set_bit_indices = []
+            for i in range(0, len(bit_pattern)):
+                if bit_pattern[i]:
+                    set_bit_indices.append(i)
+            processed_name = class_name
+            for set_bit_index in set_bit_indices:
+                processed_name = ''.join([processed_name[:set_bit_index], processed_name[set_bit_index].upper(),
+                                          processed_name[set_bit_index + 1:]])
+            yield processed_name
+
+
 if __name__ == "__main__":
     try:
         main()
     except Exception as error:
         logger.error("Unexpected exception during the conversion process. Exception type: {0}. Exception: {1}"
                      .format(type(error), error))
-
-

@@ -1,0 +1,332 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _RssiCore.yaml 
+
+
+RssiCore: &RssiCore
+  description: RSSI module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    OpenConn:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Open Connection Request (Server goes to listen state, Client actively
+        requests the connection by sending SYN segment)
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CloseConn:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Close Connection Request (Send a RST Segment to peer and close
+        the connection)
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    Mode:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Mode:0: Use internal parameters from generics,1: Use parameters
+        from registers
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    HeaderChksumEn:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Header checksum: 1: Enable calculation and check, 0: Disable
+        check and insert 0 in place of header checksum
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    InjectFault:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Inject fault to the next packet header checksum (Default 0).
+        Acts on rising edge - injects exactly one fault in next segment
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    InitSeqN:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: Initial sequence number [7:0]
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    Version:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Version register [3:0]
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxOutsSeg:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: Maximum out standing segments [7:0]
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxSegSize:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Maximum segment size [15:0]
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RetransTimeout:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Retransmission timeout [15:0]
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CumAckTimeout:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: Cumulative acknowledgment timeout [15:0]
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    NullSegTimeout:
+      at:
+        offset: 0x1c
+        byteOrder: BE
+      description: Null segment timeout [15:0]
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    MaxNumRetrans:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Maximum number of retransmissions [7:0]
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxCumAck:
+      at:
+        offset: 0x24
+        byteOrder: BE
+      description: Maximum cumulative acknowledgments [7:0]
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxOutOfSeq:
+      at:
+        offset: 0x28
+        byteOrder: BE
+      description: Max out of sequence segments (EACK) [7:0]
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ConnectionActive:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: Connection Active
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    ErrMaxRetrans:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: Maximum retransmissions exceeded retransMax.
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    ErrNullTout:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: Null timeout reached (server) nullTout.
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    ErrAck:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: Error in acknowledgment mechanism.
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    ErrSsiFrameLen:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: SSI Frame length too long
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    ErrConnTout:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: Connection to peer timed out. Timeout defined in generic PEER_CONN_TIMEOUT_G
+        (Default: 1000 ms)
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RO
+    ################################################################################
+    ParamRejected:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: Client rejected the connection (parameters out of range), Server
+        proposed new parameters (parameters out of range)
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RO
+    ################################################################################
+    ValidCnt:
+      at:
+        offset: 0x44
+        byteOrder: BE
+      description: Number of valid segments [31:0]
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    DropCnt:
+      at:
+        offset: 0x48
+        byteOrder: BE
+      description: Number of dropped segments [31:0]
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RetransmitCnt:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: Counts all retransmission requests within the active connection
+        [31:0]
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    ReconnectCnt:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: Counts all reconnections from reset [31:0]
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxFrameRate:
+      at:
+        offset: 0x54
+        byteOrder: BE
+      description: Outbound Frame Rate
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxBandwidth:
+      at:
+        offset: 0x5c
+        byteOrder: BE
+      description: Outbound Bandwidth
+      class: IntField
+      sizeBits: 64
+      mode: RO
+    ################################################################################
+    RxFrameRate:
+      at:
+        offset: 0x58
+        byteOrder: BE
+      description: Inbound Frame Rate
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxBandwidth:
+      at:
+        offset: 0x64
+        byteOrder: BE
+      description: Inbound Bandwidth
+      class: IntField
+      sizeBits: 64
+      mode: RO
+    ################################################################################
+    C_OpenConn:
+      at:
+        offset: 0x0
+      name: C_OpenConn
+      description: Open connection request
+      class: SequenceCommand
+    ################################################################################
+    C_CloseConn:
+      at:
+        offset: 0x0
+      name: C_CloseConn
+      description: Close connection request
+      class: SequenceCommand
+    ################################################################################
+    C_InjectFault:
+      at:
+        offset: 0x0
+      name: C_InjectFault
+      description: Inject a single fault(for debug and test purposes only). Corrupts
+        checksum during transmission
+      class: SequenceCommand
+    ################################################################################

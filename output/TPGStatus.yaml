@@ -1,0 +1,115 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once TPGStatus.yaml 
+
+
+TPGStatus: &TPGStatus
+  description: Timing pattern generator status
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    BsaStat:
+      at:
+        offset: 0x0
+        byteOrder: BE
+        nelms: 2
+      description: BSA status num averaged/written
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    CountPLL:
+      at:
+        offset: 0x100
+        byteOrder: BE
+      description: PLL Status changes
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    Count186M:
+      at:
+        offset: 0x104
+        byteOrder: BE
+      description: 186MHz clock counts / 16
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    CountSyncE:
+      at:
+        offset: 0x108
+        byteOrder: BE
+      description: Sync error counts
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    CountIntv:
+      at:
+        offset: 0x10c
+        byteOrder: BE
+      description: Interval timer
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    CountBRT:
+      at:
+        offset: 0x110
+        byteOrder: BE
+      description: Base rate trigger count in interval
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    CountTrig:
+      at:
+        offset: 0x114
+        byteOrder: BE
+        nelms: 2
+      description: External trigger count in interval
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    CountSeq:
+      at:
+        offset: 0x144
+        byteOrder: BE
+        nelms: 2
+      description: Sequence requests in interval
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    CountRxClks:
+      at:
+        offset: 0x248
+        byteOrder: BE
+      description: Recovered clock count / 16
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    CountRxDV:
+      at:
+        offset: 0x24c
+        byteOrder: BE
+      description: Received data valid count
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################

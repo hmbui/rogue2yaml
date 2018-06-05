@@ -1,0 +1,133 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _ClinkTop.yaml 
+
+
+ClinkTop: &ClinkTop
+  description: CameraLink module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    ChanCount:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Supported channels
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    LinkReset:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: Camera link channel reset
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    LinkLockedA:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Camera link channel locked status
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    LinkLockedB:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Camera link channel locked status
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    LinkLockedC:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Camera link channel locked status
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    ShiftCountA:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Shift count for channel
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    ShiftCountB:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Shift count for channel
+      class: IntField
+      sizeBits: 16
+      mode: RO
+    ################################################################################
+    ShiftCountC:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Shift count for channel
+      class: IntField
+      sizeBits: 24
+      mode: RO
+    ################################################################################
+    DelayA:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: Precision delay for channel A
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    DelayB:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: Precision delay for channel B
+      class: IntField
+      sizeBits: 16
+      mode: RO
+    ################################################################################
+    DelayC:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: Precision delay for channel C
+      class: IntField
+      sizeBits: 24
+      mode: RO
+    ################################################################################
+    ChannelA:
+      <<: *ChannelA
+      at:
+        offset: 0x100
+    ################################################################################
+    ChannelB:
+      <<: *ChannelB
+      at:
+        offset: 0x200
+    ################################################################################

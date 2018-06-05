@@ -1,6 +1,6 @@
 import logging
 
-logging.basicConfig(level=logging.DEBUG, filename="logs/rogue2yaml.log",
+logging.basicConfig(level=logging.INFO, filename="logs/rogue2yaml.log",
                     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 # Override the basic configs for cleaner console output

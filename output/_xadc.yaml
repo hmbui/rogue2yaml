@@ -1,0 +1,341 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _xadc.yaml 
+
+
+Xadc: &Xadc
+  description: AXI-Lite XADC for Xilinx 7 Series (Refer to PG091 & PG019)
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    TemperatureRaw:
+      at:
+        offset: 0x200
+        byteOrder: BE
+      description: "\n                The result of the on-chip temperature sensor\
+        \ measurement is \n                stored in this location. The data is MSB\
+        \ justified in the \n                16-bit register (Read Only).  The 12\
+        \ MSBs correspond to the \n                temperature sensor transfer function\
+        \ shown in Figure 2-8, \n                page 31 of UG480 (v1.2) "
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    MaxTemperatureRaw:
+      at:
+        offset: 0x280
+        byteOrder: BE
+      description: "\n                Maximum temperature measurement recorded since\
+        \ \n                power-up or the last AxiXadc reset (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    MinTemperatureRaw:
+      at:
+        offset: 0x290
+        byteOrder: BE
+      description: "\n                Minimum temperature measurement recorded since\
+        \ power-up \n                or the last AxiXadc reset (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    OverTemperatureAlarm:
+      at:
+        offset: 0x2fc
+        byteOrder: BE
+      description: Over Temperature Alarm Tripped
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    UserTemperatureAlarm:
+      at:
+        offset: 0x2fc
+        byteOrder: BE
+      description: Temperature Alarm Tripped
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    VccIntRaw:
+      at:
+        offset: 0x204
+        byteOrder: BE
+      description: "\n                The result of the on-chip VccInt supply monitor\
+        \ measurement \n                is stored at this location. The data is MSB\
+        \ justified in the \n                16-bit register (Read Only). The 12 MSBs\
+        \ correspond to the \n                supply sensor transfer function shown\
+        \ in Figure 2-9, \n                page 32 of UG480 (v1.2)     "
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    MaxVccIntRaw:
+      at:
+        offset: 0x284
+        byteOrder: BE
+      description: "\n                Maximum VccInt measurement recorded since power-up\
+        \ \n                or the last AxiXadc reset (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    MinVccIntRaw:
+      at:
+        offset: 0x294
+        byteOrder: BE
+      description: "\n                Minimum VccInt measurement recorded since power-up\
+        \ \n                or the last AxiXadc reset (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    VccIntAlarm:
+      at:
+        offset: 0x2fc
+        byteOrder: BE
+      description: VccInt Alarm Tripped
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    VccAuxRaw:
+      at:
+        offset: 0x208
+        byteOrder: BE
+      description: "\n                The result of the on-chip VccAux supply monitor\
+        \ measurement \n                is stored at this location. The data is MSB\
+        \ justified in the \n                16-bit register (Read Only). The 12 MSBs\
+        \ correspond to the \n                supply sensor transfer function shown\
+        \ in Figure 2-9, \n                page 32 of UG480 (v1.2)"
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    MaxVccAuxRaw:
+      at:
+        offset: 0x288
+        byteOrder: BE
+      description: "\n                Maximum VccAux measurement recorded since power-up\
+        \ \n                or the last AxiXadc reset (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    MinVccAuxRaw:
+      at:
+        offset: 0x298
+        byteOrder: BE
+      description: "\n                Minimum VccAux measurement recorded since power-up\
+        \ \n                or the last AxiXadc reset (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    VccAuxAlarm:
+      at:
+        offset: 0x2fc
+        byteOrder: BE
+      description: VccAux Alarm Tripped
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    VccBramRaw:
+      at:
+        offset: 0x218
+        byteOrder: BE
+      description: "\n                The result of the on-chip VccBram supply monitor\
+        \ measurement \n                is stored at this location. The data is MSB\
+        \ justified in the \n                16-bit register (Read Only). The 12 MSBs\
+        \ correspond to the \n                supply sensor transfer function shown\
+        \ in Figure 2-9, \n                page 32 of UG480 (v1.2)"
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    MaxVccBramRaw:
+      at:
+        offset: 0x28c
+        byteOrder: BE
+      description: "\n                Maximum VccBram measurement recorded since power-up\
+        \ \n                or the last AxiXadc reset (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    MinVccBramRaw:
+      at:
+        offset: 0x29c
+        byteOrder: BE
+      description: "\n                Minimum VccBram measurement recorded since power-up\
+        \ \n                or the last AxiXadc reset (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    VccBramAlarm:
+      at:
+        offset: 0x2fc
+        byteOrder: BE
+      description: VccBram Alarm Tripped
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    VinRaw:
+      at:
+        offset: 0x20c
+        byteOrder: BE
+      description: "\n                The result of a conversion on the dedicated\
+        \ analog input \n                channel is stored in this register. The data\
+        \ is MSB justified \n                in the 16-bit register (Read Only). The\
+        \ 12 MSBs correspond to the \n                transfer function shown in Figure\
+        \ 2-5, page 29 or \n                Figure 2-6, page 29 of UG480 (v1.2) depending\
+        \ on analog input mode \n                settings."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    VrefpRaw:
+      at:
+        offset: 0x210
+        byteOrder: BE
+      description: "\n                The result of a conversion on the reference\
+        \ input VrefP is \n                stored in this register. The 12 MSBs correspond\
+        \ to the ADC \n                transfer function shown in Figure 2-9  of UG480\
+        \ (v1.2). The data is MSB \n                justified in the 16-bit register\
+        \ (Read Only). The supply sensor is used \n                when measuring\
+        \ VrefP."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    VrefnRaw:
+      at:
+        offset: 0x214
+        byteOrder: BE
+      description: "\n                The result of a conversion on the reference\
+        \ input VREFN is \n                stored in this register (Read Only). This\
+        \ channel is measured in bipolar \n                mode with a 2s complement\
+        \ output coding as shown in \n                Figure 2-2, page 25. By measuring\
+        \ in bipolar mode, small \n                positive and negative at: offset\
+        \ around 0V (VrefN) can be \n                measured. The supply sensor is\
+        \ also used to measure \n                VrefN, thus 1 LSB = 3V/4096. The\
+        \ data is MSB justified in \n                the 16-bit register.      "
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    SupplyOffsetA:
+      at:
+        offset: 0x220
+        byteOrder: BE
+      description: "\n                The calibration coefficient for the supply sensor\
+        \ offset \n                using ADC A is stored at this location (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    AdcOffsetA:
+      at:
+        offset: 0x224
+        byteOrder: BE
+      description: "\n                The calibration coefficient for the ADC A offset\
+        \ is stored at \n                this location (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    AdcGainA:
+      at:
+        offset: 0x228
+        byteOrder: BE
+      description: "\n                The calibration coefficient for the ADC A gain\
+        \ error is \n                stored at this location (Read Only)."
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    JTGD:
+      at:
+        offset: 0x2fc
+        byteOrder: BE
+      description: "\n                A logic 1 indicates that the JTAG_AxiXadc BitGen\
+        \ option has \n                been used to disable all JTAG access. See DRP\
+        \ JTAG Interface for more information."
+      class: IntField
+      sizeBits: 16
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    JTGR:
+      at:
+        offset: 0x2fc
+        byteOrder: BE
+      description: "\n                A logic 1 indicates that the JTAG_AxiXadc BitGen\
+        \ option has \n                been used to disable all JTAG access. See DRP\
+        \ JTAG Interface \n                for more information."
+      class: IntField
+      sizeBits: 16
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    REF:
+      at:
+        offset: 0x2fc
+        byteOrder: BE
+      description: "\n                When this bit is a logic 1, the ADC is using\
+        \ the internal \n                voltage reference. When this bit is a logic\
+        \ 0, the external \n                reference is being used."
+      class: IntField
+      sizeBits: 16
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    OT_LimitRaw:
+      at:
+        offset: 0x34c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
