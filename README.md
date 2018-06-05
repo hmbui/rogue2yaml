@@ -25,16 +25,27 @@ slaclab Clones:
 
 How to Use:
 
-1. Modify the setup_rogue2yaml.sh file and update the paths to rogue, acm-carrier-core, and cryo-det appropriately.
-2. Copy the Python Rogue file to the input/ directory
+1. Modify the setup_rogue2yaml.sh file and update the path to rogue
+2. Create the input/ directory at the same level as the rogue2yaml.py file
 3. Create the output/ directory at the same level as input/
 4. Run the command
 
-    python rogue2yaml.py <className>
+    python rogue2yaml.py <pyrogue_dir_name> <pyrogue_class_file_dir_name>
 
-   to start the conversion. The output file will be in the output/ directory, having the name of <className>.yaml
-
-   Note that the Python Rogue file name must be the same as the class it contains.
+   to start the conversions.
+   
+   Note that each Python Rogue file name must be the same as the class it contains. If not, the converter will attempt
+   to adjust the capitalization of each character in the provided class name. If this also fails, the converter will
+   proceed to the next Python file, and will output the unsuccessfully converted file name into the conversion failure
+   list, at the summary.
+   
+   <pyrogue_dir_name>: The directory that contains all the pyrogue libraries
+   <pyrogue_clss_file_dir_name>: The directory that contains all the Python files to be converted to YAML
+   
+   The output files will be in the output/ directory, keeping the same names except for the extension, which is now 
+   ".yaml" 
+ 
+   
 5. Get the Converter's version:
 
     python rogue2yaml.py --version
