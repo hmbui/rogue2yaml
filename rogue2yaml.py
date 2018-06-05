@@ -47,6 +47,11 @@ def main():
 
     success_files = []
     failure_files = OrderedDict()
+    failure_files["TopLevel"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
+    failure_files["FpgaTopLevel"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
+    failure_files["TopLevel"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
+    failure_files["_spiCryo"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
+    failure_files["_spiMax"] = "Default commType == 'pcie-rssi-interleaved', which triggered a connection attempt."
 
     for root, directories, filenames in os.walk(os.path.expanduser(rogue_python_file_dir)):
         for filename in filenames:
@@ -56,12 +61,8 @@ def main():
                     "FpgaTopLevel",
                     "_spiCryo",
                     "_spiMax",
-                    #"_Gthe3Common",
-                    #"_Lmk04828",
-                    #"_AxiSy56040"
             ):
                 shutil.copyfile(os.path.join(root, filename), os.path.join("input", filename))
-                pass
 
     for _, _, filenames in os.walk("input"):
         for filename in filenames:

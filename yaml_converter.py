@@ -93,6 +93,11 @@ class YamlConverter:
             remote_variables = device.getNodes(pr.RemoteVariable)
             self._serialize_remote_variables(remote_variables, replica_count)
 
+        # Serialize devices
+        if hasattr(device, "devices"):
+            devices = device.devices
+            self._serialize_devices(devices)
+
         # Serialize Commands
         if hasattr(device, "commands"):
             commands = device.commands
@@ -108,14 +113,18 @@ class YamlConverter:
             An ordered dictionary of remote variables for a Rogue device.
         """
         if remote_variables and len(remote_variables):
-            for _, remote_var in remote_variables.items():
+            for key, remote_var in remote_variables.items():
                 remote_var_name = remote_var.name
                 search_index = remote_var_name.find('[')
                 if search_index >= 0:
-                    if remote_var_name[search_index:search_index + 3] == "[0]":
-                        remote_var_name = remote_var_name[0:search_index]
-                    else:
-                        # Do not output duplicate remote var names with different subscripts
+                    remote_var_name = remote_var_name[0:search_index]
+                    if key[search_index:search_index + 3] != "[0]" and not replica_count:
+                        current_node_count = child_data[remote_var_name].get("nelms", None)
+                        if current_node_count is None:
+                            self._serialized_data["__root__"]["children"][remote_var_name]["at"]["nelms"] = 2
+                        else:
+                            self._serialized_data["__root__"]["children"][remote_var_name]["at"]["nelms"] = \
+                                current_node_count + 1
                         continue
 
                 child_data = OrderedDict()
@@ -140,6 +149,43 @@ class YamlConverter:
 
                 child_data[remote_var_name]["mode"] = remote_var.mode
                 child_data[remote_var_name]['##'] = '#' * 20
+
+                self._serialized_data["__root__"]["children"].update(child_data)
+
+    def _serialize_devices(self, devices):
+        """
+        Serialize the child devices.
+
+        Parameters
+        ----------
+        devices : OrderedDict
+            The child device record.
+
+        """
+        if devices and len(devices):
+            for key, v in devices.items():
+                device_name = key
+                search_index = device_name.find('[')
+                if search_index >= 0:
+                    device_name = device_name[0:search_index]
+                    if key[search_index:search_index + 3] != "[0]":
+                        # Do not output duplicate remote var names with different subscripts
+                        current_node_count = child_data[device_name].get("nelms", None)
+                        if current_node_count is None:
+                            self._serialized_data["__root__"]["children"][device_name]["at"]["nelms"] = 2
+                        else:
+                            self._serialized_data["__root__"]["children"][device_name]["at"]["nelms"] = \
+                                current_node_count + 1
+                        continue
+
+                child_data = OrderedDict()
+                child_data['#'] = '#' * 20
+                child_data[device_name] = OrderedDict()
+                child_data[device_name]["<<"] = ''.join(['*', device_name])
+                child_data[device_name]["at"] = OrderedDict()
+                if hasattr(devices[key], "offset"):
+                    child_data[device_name]["at"]["offset"] = hex(devices[key].offset)
+                child_data[device_name]['##'] = '#' * 20
 
                 self._serialized_data["__root__"]["children"].update(child_data)
 
@@ -200,6 +246,18 @@ class YamlConverter:
 
     @staticmethod
     def _post_process_line(line):
+        """
+        Decorate an output line.
+
+        Parameters
+        ----------
+        line : str
+            An output line to be decorated.
+
+        Returns
+        -------
+            The decorated output line : str
+        """
         # Add headers to separate sections in the YAML file
         if any(keyword in line for keyword in ("children:", "\'#\'", "\'##\'")):
             space_count = len(line) - len(line.lstrip())
