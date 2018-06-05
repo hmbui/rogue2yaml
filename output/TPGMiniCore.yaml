@@ -1,0 +1,467 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once TPGMiniCore.yaml 
+
+
+TPGMiniCore: &TPGMiniCore
+  description: Embedded timing pattern generator
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    TxPolarity:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Invert transmit link polarity
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TxLoopback:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Set transmit link loopback
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TxInhibit:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Set transmit link inhibit
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    BaseControl:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: Base rate trigger divisor
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PulseIdWr:
+      at:
+        offset: 0x58
+        byteOrder: BE
+      description: Pulse ID write
+      class: IntField
+      sizeBits: 64
+      mode: WO
+    ################################################################################
+    PulseIdRd:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Pulse ID read
+      class: IntField
+      sizeBits: 64
+      mode: RO
+    ################################################################################
+    PulseIdSet:
+      at:
+        offset: 0x70
+        byteOrder: BE
+      description: Activates PulseId register value
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TStampWr:
+      at:
+        offset: 0x60
+        byteOrder: BE
+      description: Time stamp Write
+      class: IntField
+      sizeBits: 64
+      mode: WO
+    ################################################################################
+    TStampRd:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Time stamp read
+      class: IntField
+      sizeBits: 64
+      mode: RO
+    ################################################################################
+    TStampSet:
+      at:
+        offset: 0x74
+        byteOrder: BE
+      description: Activates Timestamp register value
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FixedRateDiv:
+      at:
+        offset: 0x18
+        byteOrder: BE
+        nelms: 2
+      description: Fixed rate marker divisors
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    RateReload:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: Loads cached fixed rate marker divisors
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################
+    NBeamSeq:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: Number of beam request engines
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    NControlSeq:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: Number of control sequence engines
+      class: IntField
+      sizeBits: 16
+      lsBit: 6
+      mode: RO
+    ################################################################################
+    NArraysBsa:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: Number of BSA arrays
+      class: IntField
+      sizeBits: 24
+      lsBit: 6
+      mode: RO
+    ################################################################################
+    SeqAddrLen:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: Number of beam sequence engines
+      class: IntField
+      sizeBits: 32
+      lsBit: 6
+      mode: RO
+    ################################################################################
+    NAllowSeq:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: Number of beam allow engines
+      class: IntField
+      sizeBits: 32
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    TxReset:
+      at:
+        offset: 0x68
+        byteOrder: BE
+      description: Reset transmit link
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################
+    CountIntervalReset:
+      at:
+        offset: 0x6c
+        byteOrder: BE
+      description: Count Interval Reset
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################
+    Lcls1BsaNumSamples:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: Lcls-1 BSA Number of Samples - 1
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    Lcls1BsaRate:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: Lcls-1 BSA Rate
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    Lcls1BsaTimeSlot:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: Lcls-1 BSA Time Slot
+      class: IntField
+      sizeBits: 24
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    Lcls1BsaSeverity:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: Lcls-1 BSA Rejection Severity Threshold
+      class: IntField
+      sizeBits: 24
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    Lcls1BsaEdefSlot:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: Lcls-1 BSA EDEF Slot Number
+      class: IntField
+      sizeBits: 24
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    Lcls1BsaNumAvgs:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: Lcls-1 BSA Number of Values to Average per Sample - 1
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Lcls1BsaStart:
+      at:
+        offset: 0x7c
+        byteOrder: BE
+      description: Lcls-1 BSA Started by Writing any Value Here
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    BsaCompleteWr:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: BSA complete write
+      class: IntField
+      sizeBits: 64
+      mode: WO
+    ################################################################################
+    BsaCompleteRd:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: BSA complete read
+      class: IntField
+      sizeBits: 64
+      mode: RO
+    ################################################################################
+    BsaActive:
+      at:
+        offset: 0x1fc
+        byteOrder: BE
+        nelms: 2
+      description: Activates/Deactivates BSA EDEF
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BsaRateSelMode:
+      at:
+        offset: 0x200
+        byteOrder: BE
+        nelms: 2
+      description: BSA def rate mode selection
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BsaFixedRate:
+      at:
+        offset: 0x200
+        byteOrder: BE
+        nelms: 2
+      description: BSA fixed rate mode selection
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    BsaACRate:
+      at:
+        offset: 0x200
+        byteOrder: BE
+        nelms: 2
+      description: BSA AC rate mode selection
+      class: IntField
+      sizeBits: 16
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    BsaACTSMask:
+      at:
+        offset: 0x200
+        byteOrder: BE
+        nelms: 2
+      description: BSA AC timeslot mask selection
+      class: IntField
+      sizeBits: 16
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    BsaSequenceSelect:
+      at:
+        offset: 0x200
+        byteOrder: BE
+        nelms: 2
+      description: BSA sequencer selection
+      class: IntField
+      sizeBits: 24
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    BsaSequenceBitSelect:
+      at:
+        offset: 0x200
+        byteOrder: BE
+        nelms: 2
+      description: BSA sequencer bit selection
+      class: IntField
+      sizeBits: 24
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    BsaDestMode:
+      at:
+        offset: 0x200
+        byteOrder: BE
+        nelms: 2
+      description: BSA destination mode
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    BsaDestInclusiveMask:
+      at:
+        offset: 0x204
+        byteOrder: BE
+        nelms: 2
+      description: BSA inclusive destination mask
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    BsaDestExclusiveMask:
+      at:
+        offset: 0x204
+        byteOrder: BE
+        nelms: 2
+      description: BSA exclusive destination mask
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    BsaNtoAvg:
+      at:
+        offset: 0x208
+        byteOrder: BE
+        nelms: 2
+      description: BSA def num acquisitions to average
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    BsaAvgToWr:
+      at:
+        offset: 0x208
+        byteOrder: BE
+        nelms: 2
+      description: BSA def num averages to record
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    BsaMaxSeverity:
+      at:
+        offset: 0x208
+        byteOrder: BE
+        nelms: 2
+      description: BSA def max alarm severity
+      class: IntField
+      sizeBits: 16
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    PllCnt:
+      at:
+        offset: 0x500
+        byteOrder: BE
+      description: Count of PLL status changes
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    ClkCnt:
+      at:
+        offset: 0x504
+        byteOrder: BE
+      description: Count of local 186M clock
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    SyncErrCnt:
+      at:
+        offset: 0x508
+        byteOrder: BE
+      description: Count of 71k sync errors
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    CountInterval:
+      at:
+        offset: 0x50c
+        byteOrder: BE
+      description: Interval counters update period
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    BaseRateCount:
+      at:
+        offset: 0x510
+        byteOrder: BE
+      description: Count of base rate triggers
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################

@@ -1,0 +1,387 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _pgp2baxi.yaml 
+
+
+Pgp2bAxi: &Pgp2bAxi
+  description: Configuration and status of a downstream PGP link
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    Loopback:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: GT Loopback Mode
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    LocData:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Sideband data to transmit
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    LocDataEn:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Enable sideband data to transmit
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    AutoStatus:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Auto Status Send Enable (PPI)
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RxPhyReady:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: RX Phy is Ready
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    TxPhyReady:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: TX Phy is Ready
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    RxLocalLinkReady:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Rx Local Link Ready
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    RxRemLinkReady:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Rx Remote Link Ready
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    TxLinkReady:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Tx Link Ready
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    RxLinkPolarity:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Rx Link Polarity
+      class: IntField
+      sizeBits: 16
+      mode: RO
+    ################################################################################
+    RxRemPause:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: RX Remote Pause Asserted
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    TxLocPause:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Tx Local Pause Asserted
+      class: IntField
+      sizeBits: 24
+      mode: RO
+    ################################################################################
+    RxRemOverflow:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Received remote overflow flag
+      class: IntField
+      sizeBits: 24
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    TxLocOverflow:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Received local overflow flag
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxRemLinkData:
+      at:
+        offset: 0x24
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    RxCellErrorCount:
+      at:
+        offset: 0x28
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxLinkDownCount:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxLinkErrorCount:
+      at:
+        offset: 0x30
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxRemOverflow0Count:
+      at:
+        offset: 0x34
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxRemOverflow1Count:
+      at:
+        offset: 0x38
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxRemOverflow2Count:
+      at:
+        offset: 0x3c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxRemOverflow3Count:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxFrameErrorCoumt:
+      at:
+        offset: 0x44
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxFrameCount:
+      at:
+        offset: 0x48
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxLocOverflow0Count:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxLocOverflow1Count:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxLocOverflow2Count:
+      at:
+        offset: 0x54
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxLocOverflow3Count:
+      at:
+        offset: 0x58
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxFrameErrorCount:
+      at:
+        offset: 0x5c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxFrameCount:
+      at:
+        offset: 0x60
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    LastTxOpCode:
+      at:
+        offset: 0x70
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    LastRxOpCode:
+      at:
+        offset: 0x74
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    TxOpCodeCount:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    RxOpCodeCount:
+      at:
+        offset: 0x7c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    CountReset:
+      at:
+        offset: 0x0
+      name: CountReset
+      description: 
+      class: SequenceCommand
+    ################################################################################
+    ResetRx:
+      at:
+        offset: 0x4
+      name: ResetRx
+      description: 
+      class: SequenceCommand
+    ################################################################################
+    ResetTx:
+      at:
+        offset: 0x4
+      name: ResetTx
+      description: 
+      class: SequenceCommand
+    ################################################################################
+    ResetGt:
+      at:
+        offset: 0x4
+      name: ResetGt
+      description: 
+      class: SequenceCommand
+    ################################################################################
+    Flush:
+      at:
+        offset: 0x8
+      name: Flush
+      description: 
+      class: SequenceCommand
+    ################################################################################
+    RxClkFreqRaw:
+      at:
+        offset: 0x64
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxClkFreqRaw:
+      at:
+        offset: 0x68
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################

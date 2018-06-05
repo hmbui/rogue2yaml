@@ -1,0 +1,332 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once EvrV1Reg.yaml 
+
+
+EvrV1Reg: &EvrV1Reg
+  description: LCLS-I EVR Registers
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    Status:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Status Register
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    Control:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: Control Register
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    IrqFlagWr:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Interrupt Flag Register
+      class: IntField
+      sizeBits: 32
+      mode: WO
+    ################################################################################
+    IrqFlagRd:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Interrupt Flag Register
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    IrqEnable:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: Interrupt Enable Register
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    PulseIrqMap:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Mapping register for pulse interrupt
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    PcieIntEna:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: PCIe interrupt Enable and state status
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    FWVersion:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+      description: Firmware Version Register
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    FWVersionUnmasked:
+      at:
+        offset: 0x30
+        byteOrder: BE
+      description: Firmware Version without 0x1F mask and byte swapped
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    UsecDivider:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: Divider to get from Event Clock to 1 MHz
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    SecSR:
+      at:
+        offset: 0x5c
+        byteOrder: BE
+      description: Seconds Shift Register
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    SecCounter:
+      at:
+        offset: 0x60
+        byteOrder: BE
+      description: Timestamp Seconds Counter
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    EventCounter:
+      at:
+        offset: 0x64
+        byteOrder: BE
+      description: Timestamp Event Counter
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    SecLatch:
+      at:
+        offset: 0x68
+        byteOrder: BE
+      description: Timestamp Seconds Counter Latch
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    EvCntLatch:
+      at:
+        offset: 0x6c
+        byteOrder: BE
+      description: Timestamp Event Counter Latch
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    IntEventEn:
+      at:
+        offset: 0xa0
+        byteOrder: BE
+      description: Internal Event Enable
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    IntEventCount:
+      at:
+        offset: 0xa4
+        byteOrder: BE
+      description: Internal Event Count
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    IntEventCode:
+      at:
+        offset: 0xa8
+        byteOrder: BE
+      description: Internal Event Code
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ExtEventEn:
+      at:
+        offset: 0xac
+        byteOrder: BE
+      description: External Event Enable
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ExtEventCode:
+      at:
+        offset: 0xb0
+        byteOrder: BE
+      description: External Event Code
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    Pulse00:
+      at:
+        offset: 0x200
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 0 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse01:
+      at:
+        offset: 0x210
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 1 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse02:
+      at:
+        offset: 0x220
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 2 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse03:
+      at:
+        offset: 0x230
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 3 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse04:
+      at:
+        offset: 0x240
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 4 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse05:
+      at:
+        offset: 0x250
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 5 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse06:
+      at:
+        offset: 0x260
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 6 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse07:
+      at:
+        offset: 0x270
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 7 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse08:
+      at:
+        offset: 0x280
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 8 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse09:
+      at:
+        offset: 0x290
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 9 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse10:
+      at:
+        offset: 0x2a0
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 10 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Pulse11:
+      at:
+        offset: 0x2b0
+        byteOrder: BE
+        nelms: 2
+      description: Pulse 11 Registers
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    OutputMap:
+      at:
+        offset: 0x440
+        byteOrder: BE
+        nelms: 2
+      description: Front Panel Output Map Registers [11:0]
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################

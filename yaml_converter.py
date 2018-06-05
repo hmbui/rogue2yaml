@@ -33,7 +33,7 @@ class YamlConverter:
         self._pyrogue_device = pyrogue_device
         self._serialized_data = OrderedDict()
 
-    def convert(self, export_filename):
+    def convert(self, export_filename, export_dirname="output"):
         """
         Perform the conversion, i.e. dumping the Rogue device object's data into a YAML-formatted file.
 
@@ -43,9 +43,11 @@ class YamlConverter:
         ----------
         export_filename : str
             The name of the output file
+        export_dirname : str
+            The name of the output directory
         """
         self._serialize_rogue_data()
-        self._export_to_yaml(export_filename)
+        self._export_to_yaml(export_filename, export_dirname)
 
     def _serialize_rogue_data(self):
         """
@@ -216,7 +218,7 @@ class YamlConverter:
 
                 self._serialized_data["__root__"]["children"].update(child_data)
 
-    def _export_to_yaml(self, filename):
+    def _export_to_yaml(self, filename, dirname="output"):
         """
         Post-process the YAML contents before writing into the final output file.
 
@@ -228,21 +230,23 @@ class YamlConverter:
         ----------
         filename : str
             The user-provided output data file name.
+        dirname : str
+            The name of the output directory
         """
-        with open(os.path.join("output", '.'.join([filename, "tmp"])), 'w') as temp_yaml_file:
+        with open(os.path.join(dirname, '.'.join([filename, "tmp"])), 'w') as temp_yaml_file:
             contents = YamlConverter.ordered_dump(self._serialized_data, dumper=yaml.SafeDumper,
                                                   default_flow_style=False)
             contents = contents.replace("__root__:\n", "")
             temp_yaml_file.write(contents)
-        with open(os.path.join("output", filename), 'w') as yaml_file:
+        with open(os.path.join(dirname, filename), 'w') as yaml_file:
             YamlConverter._insert_heading(yaml_file, filename)
-            with open(os.path.join("output", '.'.join([filename, "tmp"])), 'r') as temp_yaml_file:
+            with open(os.path.join(dirname, '.'.join([filename, "tmp"])), 'r') as temp_yaml_file:
                 lines = temp_yaml_file.readlines()
                 for line in lines:
                     line = YamlConverter._post_process_line(line)
                     yaml_file.write(line)
 
-        os.remove(os.path.join("output", '.'.join([filename, "tmp"])))
+        os.remove(os.path.join(dirname, '.'.join([filename, "tmp"])))
 
     @staticmethod
     def _post_process_line(line):
@@ -254,9 +258,9 @@ class YamlConverter:
         line : str
             An output line to be decorated.
 
-        Returns
+        Returns : str
         -------
-            The decorated output line : str
+            The decorated output line
         """
         # Add headers to separate sections in the YAML file
         if any(keyword in line for keyword in ("children:", "\'#\'", "\'##\'")):
@@ -306,7 +310,7 @@ class YamlConverter:
         kwds : args
             Additional arguments as supported by PyYAML.
 
-        Returns
+        Returns : str
         -------
         A string containing the entire YAML contents.
         """

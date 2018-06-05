@@ -1,0 +1,58 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _Tcn75a.yaml 
+
+
+Tcn75a: &Tcn75a
+  description: Tcn75a
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    AmbientTemperature:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Ambient Temperature Register (TA)
+      class: IntField
+      sizeBits: 16
+      mode: RO
+    ################################################################################
+    Configuration:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: Sensor Configuration Register (CONFIG)
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TemperatureHysteresis:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Temperature Hysteresis Register (THYST)
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TemperatureLimitSet:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: Temperature Limit-Set Register (TSET)
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################

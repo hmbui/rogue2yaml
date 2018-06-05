@@ -1,0 +1,669 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _Gthe3Common.yaml 
+
+
+Gthe3Common: &Gthe3Common
+  description: 
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    QPLL0_CFG0:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    COMMON_CFG0:
+      at:
+        offset: 0x24
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RSVD_ATTR0:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_CFG1:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_CFG2:
+      at:
+        offset: 0x44
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_LOCK_CFG:
+      at:
+        offset: 0x48
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_INIT_CFG0:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_INIT_CFG1:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_FBDIV:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    QPLL0_CFG3:
+      at:
+        offset: 0x54
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_CP:
+      at:
+        offset: 0x58
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_REFCLK_DIV:
+      at:
+        offset: 0x60
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    QPLL0_LPF:
+      at:
+        offset: 0x64
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_CFG1_G3:
+      at:
+        offset: 0x68
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_CFG2_G3:
+      at:
+        offset: 0x6c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_LPF_G3:
+      at:
+        offset: 0x70
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_LOCK_CFG_G3:
+      at:
+        offset: 0x74
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RSVD_ATTR1:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_FBDIV_G3:
+      at:
+        offset: 0x7c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXRECCLKOUT0_SEL:
+      at:
+        offset: 0x7c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    QPLL0_SDM_CFG0:
+      at:
+        offset: 0x80
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_SDM_CFG1:
+      at:
+        offset: 0x84
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SDM0INITSEED0_0:
+      at:
+        offset: 0x88
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SDM0INITSEED0_1:
+      at:
+        offset: 0x8c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    QPLL0_SDM_CFG2:
+      at:
+        offset: 0x90
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_CP_G3:
+      at:
+        offset: 0x94
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SDM0DATA1_0:
+      at:
+        offset: 0xa0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SDM0_WIDTH_PIN_SEL:
+      at:
+        offset: 0xa4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SDM0_DATA_PIN_SEL:
+      at:
+        offset: 0xa4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    SDM0DATA1_1:
+      at:
+        offset: 0xa4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL0_CFG4:
+      at:
+        offset: 0xc0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    BIAS_CFG0:
+      at:
+        offset: 0x204
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    BIAS_CFG1:
+      at:
+        offset: 0x208
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    BIAS_CFG2:
+      at:
+        offset: 0x20c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    BIAS_CFG3:
+      at:
+        offset: 0x210
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    BIAS_CFG_RSVD:
+      at:
+        offset: 0x214
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    BIAS_CFG4:
+      at:
+        offset: 0x218
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_CFG0:
+      at:
+        offset: 0x220
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    COMMON_CFG1:
+      at:
+        offset: 0x224
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    POR_CFG:
+      at:
+        offset: 0x22c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_CFG1:
+      at:
+        offset: 0x240
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_CFG2:
+      at:
+        offset: 0x244
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_LOCK_CFG:
+      at:
+        offset: 0x248
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_INIT_CFG0:
+      at:
+        offset: 0x24c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_INIT_CFG1:
+      at:
+        offset: 0x250
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_FBDIV_G:
+      at:
+        offset: 0x250
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    QPLL1_CFG3:
+      at:
+        offset: 0x254
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_CP:
+      at:
+        offset: 0x258
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SARC_SEL:
+      at:
+        offset: 0x260
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    SARC_EN:
+      at:
+        offset: 0x260
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    QPLL1_REFCLK_DIV:
+      at:
+        offset: 0x260
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    QPLL1_LPF:
+      at:
+        offset: 0x264
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_CFG1_G3:
+      at:
+        offset: 0x268
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_CFG2_G3:
+      at:
+        offset: 0x26c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_LPF_G3:
+      at:
+        offset: 0x270
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_LOCK_CFG_G3:
+      at:
+        offset: 0x274
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RSVD_ATTR2:
+      at:
+        offset: 0x278
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_FBDIV_G3:
+      at:
+        offset: 0x27c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXRECCLKOUT1_SEL:
+      at:
+        offset: 0x27c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    QPLL1_SDM_CFG0:
+      at:
+        offset: 0x280
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_SDM_CFG1:
+      at:
+        offset: 0x284
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SDM1INITSEED0_0:
+      at:
+        offset: 0x288
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SDM1INITSEED0_1:
+      at:
+        offset: 0x28c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_SDM_CFG2:
+      at:
+        offset: 0x290
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_CP_G3:
+      at:
+        offset: 0x294
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SDM1DATA1_0:
+      at:
+        offset: 0x2a0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SDM1_WIDTH_PIN_SEL:
+      at:
+        offset: 0x2a4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SDM1_DATA_PIN_SEL:
+      at:
+        offset: 0x2a4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    SDM1DATA1_1:
+      at:
+        offset: 0x2a4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RSVD_ATTR3:
+      at:
+        offset: 0x2b4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    QPLL1_CFG4:
+      at:
+        offset: 0x2c0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################

@@ -1,0 +1,39 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _adf5355.yaml 
+
+
+Adf5355: &Adf5355
+  description: Adf5355 module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    REG:
+      at:
+        offset: 0x0
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    RegInitSeq:
+      at:
+        offset: 0x0
+      name: RegInitSeq
+      description: refer to REGISTER INITIALIZATION SEQUENCE section of datasheet
+      class: SequenceCommand
+    ################################################################################
