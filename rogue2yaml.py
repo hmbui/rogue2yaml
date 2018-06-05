@@ -80,10 +80,11 @@ def main():
                 converter.convert('.'.join([filename, "yaml"]))
                 success_files.append(filename)
             except (TypeError, AttributeError, SyntaxError, NameError, ErrorDuringImport) as error:
-                failure_files[filename] = '. '.join([str(type(error)), str(error)])
-                logger.error("Cannot instantiate the object of type '{0}'. Make sure you provide the correct class "
-                             "name and the right Rogue Python file in the 'input' directory. Exception Type: {1}. "
-                             "Exception: {2}".format(filename, type(error), error))
+                failure_files[filename] = '. '.join(["Make sure the file name and the class name are the same",
+                                                     str(type(error)), str(error)])
+                logger.error("Cannot instantiate the object of type '{0}'. Make sure the file name and the class name ."
+                             "are the same (case-sensitive). Exception Type: {1}. Exception: {2}"
+                             .format(filename, type(error), error))
             except Exception as e:
                 logger.error("Unexpected exception during the conversion of file '{0}'. Exception type: {1}. "
                              "Exception: {2}".format(filename, type(e), e))
