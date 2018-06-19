@@ -12,6 +12,7 @@ from yaml_converter import YamlConverter
 @pytest.mark.parametrize("rogue_filename, class_name", [
     ("_AxiVersion", "AxiVersion"),
     ("_AmcCryoDemoCore", "AmcCryoDemoCore"),
+    ("AppTop", "AppTop")
 ])
 def test_rogue2yaml_conversion(rogue_filename, class_name):
     rogue_dir = "~/local/dev/rogue"

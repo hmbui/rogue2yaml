@@ -20,11 +20,53 @@ setup_paths()
 from yaml_converter import YamlConverter
 
 
-def parse_arguments():
+def main():
+    logger.info("Starting a new conversion session...\n")
+    logger.info(''.join(['-' * 80, '\n']))
+
+    # Parsing command arguments
+    args = _parse_arguments()
+
+    rogue_dir = vars(args)["rogue_collection_dir"]
+    sys.path.insert(1, os.path.expandvars(os.path.expanduser(rogue_dir)))
+
+    rogue_python_file_dir = vars(args)["rogue_python_file_dir"]
+    sys.path.insert(1, os.path.expandvars(os.path.expanduser(rogue_python_file_dir)))
+    output_file_dir = _process_output_file_dir(vars(args).get("output_file_dir", None))
+
+    # Records to keep track of successfully converted and unsuccessfully converted (and skipped) files
+    success_files = []
+    with open(os.path.join("settings", "exclusions.json"), 'r') as exclusion_file:
+        failure_files = json.load(exclusion_file)
+
+    exclusion_list = []
+    for k, _ in failure_files.items():
+        exclusion_list.append(k)
+
+    # Copy all the Rogue Python files scattered across the Rogue directories to one single input location
+    _collect_rogue_files(rogue_python_file_dir, exclusion_list)
+
+    # Convert the files
+    _convert_files(output_file_dir, success_files, failure_files)
+
+    # Conversion summary
+    _summarize(success_files, failure_files)
+
+
+def _parse_arguments():
+    """
+    Parse the command arguments.
+
+    Returns
+    -------
+    The command arguments as a dictionary : dict
+    """
     parser = ArgParser(description="Convert a PyRogue class definition file to a CSPW YAML file.")
     parser.add_argument("rogue_collection_dir", help="The name of the Python Rogue directory.")
     parser.add_argument("rogue_python_file_dir", help="The directory that contains the Python Rogue file to convert to "
                                                       "CPSW YAML.")
+    parser.add_argument("output_file_dir", nargs='?', default="",
+                        help="The directory that contains the output CPSW YAML files.")
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--version", action="version", version=VERSION)
@@ -34,69 +76,139 @@ def parse_arguments():
     return args
 
 
-def main():
-    logger.info("Starting a new conversion session...\n")
-    logger.info(''.join(['-' * 80, '\n']))
+def _process_output_file_dir(output_file_dir):
+    """
+    Expand the output directory, or use the default value if the user does not specify the output directory name.
 
-    args = parse_arguments()
+    Parameters
+    ----------
+    output_file_dir : str
+        The name of the directory to output all the CPSW YAML files.
 
-    rogue_dir = vars(args)["rogue_collection_dir"]
-    sys.path.insert(1, os.path.expandvars(os.path.expanduser(rogue_dir)))
+    Returns
+    -------
+        The processed output directory : str
 
-    rogue_python_file_dir = vars(args)["rogue_python_file_dir"]
-    sys.path.insert(1, os.path.expandvars(os.path.expanduser(rogue_python_file_dir)))
+    """
+    if not output_file_dir:
+        output_file_dir = "output"
 
-    success_files = []
-    with open (os.path.join("settings", "exclusions.json"), 'r') as exclusion_file:
-        failure_files = json.load(exclusion_file)
+    output_file_dir = os.path.expandvars(os.path.expanduser(output_file_dir))
+    if not os.path.exists(output_file_dir):
+        os.makedirs(output_file_dir)
+    return output_file_dir
 
-    exclusion_list = []
-    for k, _ in failure_files.items():
-        exclusion_list.append(k)
 
+def _collect_rogue_files(rogue_python_file_dir, exclusion_list):
+    """
+    Collect all the input files to a common location for the batch conversion.
+
+    Parameters
+    ----------
+    rogue_python_file_dir : str
+        The name of the directory containing the files to be converted
+
+    exclusion_list : list
+        A list of names of the files to be excluded from being converted
+    """
     for root, directories, filenames in os.walk(os.path.expanduser(rogue_python_file_dir)):
         for filename in filenames:
             if filename[-3:] == ".py" and filename[:-3] not in exclusion_list:
                 shutil.copyfile(os.path.join(root, filename), os.path.join("input", filename))
 
+
+def _convert_files(output_file_dir, success_files, failure_files):
+    """
+    Convert the Rogue Python files into CPSW YAML files.
+
+    First, check if the YAML file is already available in the output directory. If so, log and skip the file from
+    converting it.
+
+    Next, convert the Rogue Python file if its corresponding YAML file is not in the output directory. If the
+    conversion fails, retry the conversion by varying capitalization of the filename.
+
+    A successful conversion will add the filename into the success file list. A failed conversion will add to the
+    failure file list.
+
+    Parameters
+    ----------
+    output_file_dir : str
+        The directory to output the converted files
+    success_files : list
+        A name list of files that are successfully converted
+    failure_files : list
+        A name list of files that are unsuccessfully converted, and files that are skipped from being converted
+    """
     for _, _, filenames in os.walk("input"):
         for filename in filenames:
-            logger.info("Converting file '{0}'...".format(filename))
-            filename = filename[:-3]
-            class_name = filename
+            output_file_found = False
 
-            if class_name[0] == '_':
-                class_name = class_name[1:]
+            # Check if the file is already converted. If found, skip that file
+            for _, _, output_files in os.walk(output_file_dir):
+                output_filename = filename[:-3] + ".yaml"
+                if output_filename in output_files:
+                    failure_message = "Skipping file '{0}' as its converted file '{1}' is found in the output " \
+                                      "directory '{2}'.".format(filename, output_filename, output_file_dir)
+                    failure_files[output_filename] = failure_message
+                    logger.info(failure_message)
+                    output_file_found = True
 
-            class_rep = None
-            trial_count = 0
+            if not output_file_found:
+                logger.info("Converting file '{0}'...".format(filename))
+                filename = filename[:-3]
+                class_name = filename
 
-            original_class_name = class_name
-            output = _generate_class_name_variations(original_class_name)
+                if class_name[0] == '_':
+                    class_name = class_name[1:]
 
-            while not class_rep and trial_count < 2 ** len(class_name):
-                class_name = next(output)
-                logger.debug("Trying class name variation '{0}'...".format(class_name))
+                class_rep = None
+                trial_count = 0
 
-                class_rep = locate('.'.join(["input", filename, class_name]))
-                if not class_rep:
-                    trial_count += 1
-            try:
-                pyrogue_device = class_rep()
+                original_class_name = class_name
+                output = _generate_class_name_variations(original_class_name)
 
-                converter = YamlConverter(pyrogue_device)
-                converter.convert('.'.join([filename, "yaml"]))
-                success_files.append(filename)
-            except (TypeError, AttributeError, SyntaxError, NameError, ErrorDuringImport) as error:
-                failure_files[filename] = '. '.join(["Make sure the file name and the class name are the same",
-                                                     str(type(error)), str(error)])
-                logger.error("Cannot instantiate the object of type '{0}'. Make sure the file name and the class name ."
-                             "are the same (case-sensitive). Exception Type: {1}. Exception: {2}"
-                             .format(filename, type(error), error))
-            except Exception as e:
-                logger.error("Unexpected exception during the conversion of file '{0}'. Exception type: {1}. "
-                             "Exception: {2}".format(filename, type(e), e))
+                while not class_rep and trial_count < 2 ** len(class_name):
+                    class_name = next(output)
+                    logger.debug("Trying class name variation '{0}'...".format(class_name))
 
+                    class_rep = locate('.'.join(["input", filename, class_name]))
+                    if not class_rep:
+                        trial_count += 1
+                try:
+                    # Instantiate the Rogue device
+                    pyrogue_device = class_rep()
+
+                    # Instantiate the YAML Converter
+                    converter = YamlConverter(pyrogue_device)
+
+                    # Convert to YAML and save to the output file
+                    converter.convert('.'.join([filename, "yaml"]), export_dirname=output_file_dir)
+                    success_files.append(filename)
+                except (TypeError, AttributeError, SyntaxError, NameError, ErrorDuringImport) as error:
+                    failure_files[filename] = '. '.join(["Make sure the file name and the class name are the same",
+                                                         str(type(error)), str(error)])
+                    logger.error("Cannot instantiate the object of type '{0}'. Make sure the file name and the class "
+                                 "name are the same (case-sensitive). Exception Type: {1}. Exception: {2}"
+                                 .format(filename, type(error), error))
+                except Exception as e:
+                    logger.error("Unexpected exception during the conversion of file '{0}'. Exception type: {1}. "
+                                 "Exception: {2}".format(filename, type(e), e))
+
+
+def _summarize(success_files, failure_files):
+    """
+    Log the summary of the conversions.
+
+    Print out the number of files successfully converted, and not. Also print out the names of such files. For failure
+    files, print out the reasons why the files could not be converted, and any applicable errors and potential reasons.
+
+    Parameters
+    ----------
+    success_files : list
+        A name list of files that are successfully converted
+    failure_files : list
+        A name list of files that are unsuccessfully converted, and files that are skipped from being converted
+    """
     success_count = len(success_files)
     failure_count = len(failure_files)
 
