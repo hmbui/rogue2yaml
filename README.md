@@ -15,6 +15,7 @@ Next, clone rogue from GitHub:
 ```sh
 git clone https://github.com/slaclab/rogue.git
 ```
+and then build rogue according to the [rogue build instructions](https://github.com/slaclab/rogue#building-rogue, "Rogue Build Instructions")
 
 Now, clone the Rogue2Yaml utility repo:
 ```sh
