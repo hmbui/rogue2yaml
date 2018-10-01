@@ -24,7 +24,7 @@ pip install .[all]
 
 ## Running Rogue2Yaml
 
-1. Note the path to your cloned rogue repro
+1. Note the path to your cloned rogue repo
 2. Copy the rogue files you want to convert into a directory
 3. Create a directory for your output CPSW YAML files 
 
