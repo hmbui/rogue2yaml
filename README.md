@@ -8,14 +8,14 @@ slaclab rogue (https://github.com/slaclab/rogue)
 ## Installing Rogue2Yaml
 You must first install rogue as it is what this Rogue2Yaml utility is built for.
 
-In doing so, you must first satisfy the [rogue prerequisites](https://github.com/slaclab/rogue#python-packages-required, "Rogue Requirements for Python").
+In doing so, you must first satisfy the [rogue prerequisites](https://github.com/slaclab/rogue#python-packages-required "Rogue Requirements for Python").
 
 Next, clone rogue from GitHub:
 
 ```sh
 git clone https://github.com/slaclab/rogue.git
 ```
-and then build rogue according to the [rogue build instructions](https://github.com/slaclab/rogue#building-rogue, "Rogue Build Instructions")
+and then build rogue according to the [rogue build instructions](https://github.com/slaclab/rogue#building-rogue "Rogue Build Instructions")
 
 Now, clone the Rogue2Yaml utility repo:
 ```sh
