@@ -89,10 +89,16 @@ def _process_output_file_dir(output_file_dir):
     """
     if not output_file_dir:
         output_file_dir = "output"
+    else:
+        output_file_dir = os.path.expandvars(os.path.expanduser(output_file_dir))
 
-    output_file_dir = os.path.expandvars(os.path.expanduser(output_file_dir))
     if not os.path.exists(output_file_dir):
-        os.makedirs(output_file_dir)
+        try:
+            os.makedirs(output_file_dir)
+        except os.error as err:
+            # It's OK if the output directory exists. This is to be compatible with Python 2.7
+            if err.errno != os.errno.EEXIST:
+                raise err
     return output_file_dir
 
 
@@ -108,6 +114,13 @@ def _collect_rogue_files(rogue_python_file_dir, exclusion_list):
     exclusion_list : list
         A list of names of the files to be excluded from being converted
     """
+    try:
+        os.makedirs("input")
+    except os.error as err:
+        # It's OK if the "input" directory exists. This is to be compatible with Python 2.7
+        if err.errno != os.errno.EEXIST:
+            raise err
+
     for root, directories, filenames in os.walk(os.path.expanduser(rogue_python_file_dir)):
         for filename in filenames:
             if filename[-3:] == ".py" and filename[:-3] not in exclusion_list:
