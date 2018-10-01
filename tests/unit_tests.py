@@ -5,8 +5,10 @@ import sys
 from pydoc import locate
 import difflib
 
-from rogue2yaml import _generate_class_name_variations
-from yaml_converter import YamlConverter
+sys.path.insert(1, "/afs/slac.stanford.edu/g/lcls/vol9/package/pyrogue/rogue/v2.8.3/python")
+
+from rogue2yaml_launcher.main import _generate_class_name_variations
+from rogue2yaml.yaml_converter import YamlConverter
 
 
 @pytest.mark.parametrize("rogue_filename, class_name", [

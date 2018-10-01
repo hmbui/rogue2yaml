@@ -1,0 +1,123 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once DacSigGen.yaml 
+
+
+DacSigGen: &DacSigGen
+  description: Signal generator module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    EnableMask:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Mask Enable channels.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ModeMask:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: Mask select Mode: 0 - Triggered Mode. 1 - Periodic Mode
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SignFormat:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Mask select Sign: 0 - Signed 2s complement, 1 - Offset binary
+        (Currently Applies only to zero data)
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SoftwareTrigger:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: Mask Software trigger (applies in triggered mode, Internal edge
+        detector)
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    Running:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Mask Running status
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    Underflow:
+      at:
+        offset: 0x24
+        byteOrder: BE
+      description: Mask Underflow status: 16bit to 32bit conversion underflow (applies
+        in 32bit interface).
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    Overflow:
+      at:
+        offset: 0x28
+        byteOrder: BE
+      description: Mask Overflow status: 16bit to 32bit conversion underflow (applies
+        in 32bit interface).
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    MaxWaveformSize:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+      description: Max Waveform size (2**ADDR_WIDTH_G)
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    PeriodSize:
+      at:
+        offset: 0x40
+        byteOrder: BE
+        nelms: 2
+      description: In Periodic mode: Period size (Zero inclusive). In Triggered mode:
+        Waveform size (Zero inclusive). Separate values for separate channels.
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    SwTrigger:
+      at:
+        offset: 0x0
+      name: SwTrigger
+      description: Trigger waveform from software (All channels. Triggered mode).
+      class: SequenceCommand
+    ################################################################################
+    LoadCsvFile:
+      at:
+        offset: 0x0
+      name: LoadCsvFile
+      description: Load the .CSV
+      class: SequenceCommand
+    ################################################################################

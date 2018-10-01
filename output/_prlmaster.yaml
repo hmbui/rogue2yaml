@@ -1,0 +1,202 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _prlmaster.yaml 
+
+
+SysGen: &SysGen
+  description: System Generator Module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    Version:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: User version number
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    ScratchPad:
+      at:
+        offset: 0xffc
+        byteOrder: BE
+      description: User scratchpad
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    PhaseShift:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: Additional phase shift
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    LoopReset:
+      at:
+        offset: 0x44
+        byteOrder: BE
+      description: Loopfilter reset 0 - set, 1 - reset
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    LED:
+      at:
+        offset: 0x48
+        byteOrder: BE
+      description: Status of LEDs, MSB - blue LED, 2nd bit - red LED, LSB - grn LED.
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RawPhiErr:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: Phase error before the phase shifter
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    PhiErrFinal:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: Phase error after phase shifter
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    LockLogicState:
+      at:
+        offset: 0x54
+        byteOrder: BE
+      description: Lock logic state
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    LoopfilterGain:
+      at:
+        offset: 0x58
+        byteOrder: BE
+      description: Last gain block before output
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    LoopPolarity:
+      at:
+        offset: 0x5c
+        byteOrder: BE
+      description: Loopfilter loop 0 - positive, 1 - negative
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    w1:
+      at:
+        offset: 0x60
+        byteOrder: BE
+      description: zero in radian frequency
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    w2:
+      at:
+        offset: 0x64
+        byteOrder: BE
+      description: pole in radian frequency
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    w0:
+      at:
+        offset: 0x68
+        byteOrder: BE
+      description: unity gain in radian frequency
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    VCO_gain:
+      at:
+        offset: 0x6c
+        byteOrder: BE
+      description: VCO gain in radian frequency
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    ext_freq_mult:
+      at:
+        offset: 0x70
+        byteOrder: BE
+      description: External frequency multiplier gain
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    Phase_ramp_gain:
+      at:
+        offset: 0x74
+        byteOrder: BE
+      description: phase shift ramp slope
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    ADC0_Amp:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: ADC0 amplitude from CORDIC
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    ADC1_Amp:
+      at:
+        offset: 0x7c
+        byteOrder: BE
+      description: ADC1 amplitude form CORDIC
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    LockDisable:
+      at:
+        offset: 0x80
+        byteOrder: BE
+      description: Loop lock disable setting bit in lock logic state machine
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    StateReset:
+      at:
+        offset: 0x84
+        byteOrder: BE
+      description: Reset the lock logic state machine
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################

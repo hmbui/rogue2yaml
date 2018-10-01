@@ -1,0 +1,3518 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _Gthe3Channel.yaml 
+
+
+Gthe3Channel: &Gthe3Channel
+  description: Gthe3Channel
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    CDR_SWAP_MODE_EN:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXCDRFREQRESET_TIME:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    EYE_SCAN_SWAP_EN:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RX_DATA_WIDTH:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    RXBUFRESET_TIME:
+      at:
+        offset: 0xd
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RX_FABINT_USRCLK_FLOP:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXDFELPMRESET_TIME:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    PCI3_RX_ELECIDLE_H2L_DISABLE:
+      at:
+        offset: 0x11
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXCDRPHRESET_TIME:
+      at:
+        offset: 0x11
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RXELECIDLE_CFG:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXPCSRESET_TIME:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    PCI3_RX_FIFO_DISABLE:
+      at:
+        offset: 0x15
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PCI3_RX_ELECIDLE_EI2_ENABLE:
+      at:
+        offset: 0x15
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    PCI3_RX_ELECIDLE_LP4_DISABLE:
+      at:
+        offset: 0x15
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RXPMARESET_TIME:
+      at:
+        offset: 0x15
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RXDFE_HB_CFG1:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TXPCSRESET_TIME:
+      at:
+        offset: 0x24
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    TX_PMA_POWER_SAVE:
+      at:
+        offset: 0x25
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RX_PMA_POWER_SAVE:
+      at:
+        offset: 0x25
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TXPMARESET_TIME:
+      at:
+        offset: 0x25
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    TX_FABINT_USRCLK_FLOP:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RXPMACLK_SEL:
+      at:
+        offset: 0x2b
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    WB_MODE:
+      at:
+        offset: 0x2b
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    RXISCANRESET_TIME:
+      at:
+        offset: 0x30
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TX_PROGCLK_SEL:
+      at:
+        offset: 0x31
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RXCDR_CFG:
+      at:
+        offset: 0x38
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_LOCK_CFG0:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_1_1:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_LEN:
+      at:
+        offset: 0x51
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    CHAN_BOND_MAX_SKEW:
+      at:
+        offset: 0x51
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_1_3:
+      at:
+        offset: 0x54
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PCI3_RX_ELECIDLE_HI_COUNT:
+      at:
+        offset: 0x55
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_1_4:
+      at:
+        offset: 0x58
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PCI3_RX_ELECIDLE_H2L_COUNT:
+      at:
+        offset: 0x59
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    PCI3_PIPE_RX_ELECIDLE:
+      at:
+        offset: 0x5c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    PCI3_AUTO_REALIGN:
+      at:
+        offset: 0x5c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    OOBDIVCTL:
+      at:
+        offset: 0x5c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    RX_DEFER_RESET_BUF_EN:
+      at:
+        offset: 0x5d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RX_BUFFER_CFG:
+      at:
+        offset: 0x5d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_2_1:
+      at:
+        offset: 0x60
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PCI3_RX_ASYNC_EBUF_BYPASS:
+      at:
+        offset: 0x61
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_1_ENABLE:
+      at:
+        offset: 0x61
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_2_2:
+      at:
+        offset: 0x64
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_2_3:
+      at:
+        offset: 0x68
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_2_4:
+      at:
+        offset: 0x6c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_2_USE:
+      at:
+        offset: 0x71
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_2_ENABLE:
+      at:
+        offset: 0x71
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    CHAN_BOND_KEEP_ALIGN:
+      at:
+        offset: 0x74
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CLK_CORRECT_USE:
+      at:
+        offset: 0x91
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    CLK_COR_MIN_LAT:
+      at:
+        offset: 0x70
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CLK_COR_MAX_LAT:
+      at:
+        offset: 0x75
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    CLK_COR_KEEP_IDLE:
+      at:
+        offset: 0x70
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_LEN:
+      at:
+        offset: 0x74
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    CLK_COR_REPEAT_WAIT:
+      at:
+        offset: 0x74
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    CLK_COR_PRECEDENCE:
+      at:
+        offset: 0x75
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_1_ENABLE:
+      at:
+        offset: 0x89
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_1_1:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_1_2:
+      at:
+        offset: 0x7c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_1_3:
+      at:
+        offset: 0x80
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_1_4:
+      at:
+        offset: 0x84
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_2_ENABLE:
+      at:
+        offset: 0x91
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_2_USE:
+      at:
+        offset: 0x91
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_2_1:
+      at:
+        offset: 0x88
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_2_2:
+      at:
+        offset: 0x8c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_2_3:
+      at:
+        offset: 0x90
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CLK_COR_SEQ_2_4:
+      at:
+        offset: 0x94
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_HE_CFG0:
+      at:
+        offset: 0x98
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ALIGN_COMMA_ENABLE:
+      at:
+        offset: 0x9c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SHOW_REALIGN_COMMA:
+      at:
+        offset: 0x9d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    ALIGN_COMMA_DOUBLE:
+      at:
+        offset: 0x9d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    ALIGN_COMMA_WORD:
+      at:
+        offset: 0x9d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TXDRVBIAS_N:
+      at:
+        offset: 0xa0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CPLL_FBDIV_45:
+      at:
+        offset: 0xa0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    CPLL_FBDIV:
+      at:
+        offset: 0xa0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CPLL_LOCK_CFG:
+      at:
+        offset: 0xa4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TXDRVBIAS_P:
+      at:
+        offset: 0xa8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SATA_CPLL_CFG:
+      at:
+        offset: 0xa8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    CPLL_REFCLK_DIV:
+      at:
+        offset: 0xa9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    CPLL_INIT_CFG0:
+      at:
+        offset: 0xac
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    A_RXPROGDIVRESET:
+      at:
+        offset: 0xb0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    A_TXPROGDIVRESET:
+      at:
+        offset: 0xb0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RX_DIVRESET_TIME:
+      at:
+        offset: 0xb0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TX_DIVRESET_TIME:
+      at:
+        offset: 0xb0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    DEC_PCOMMA_DETECT:
+      at:
+        offset: 0xb1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    RXCDR_LOCK_CFG1:
+      at:
+        offset: 0xb4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCFOK_CFG1:
+      at:
+        offset: 0xb8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H2_CFG0:
+      at:
+        offset: 0xbc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H2_CFG1:
+      at:
+        offset: 0xc0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCFOK_CFG2:
+      at:
+        offset: 0xc4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXLPM_CFG:
+      at:
+        offset: 0xc8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXLPM_KH_CFG0:
+      at:
+        offset: 0xcc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXLPM_KH_CFG1:
+      at:
+        offset: 0xd0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFELPM_KL_CFG0:
+      at:
+        offset: 0xd4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFELPM_KL_CFG1:
+      at:
+        offset: 0xd8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXLPM_OS_CFG0:
+      at:
+        offset: 0xdc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXLPM_OS_CFG1:
+      at:
+        offset: 0xe0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXLPM_GC_CFG:
+      at:
+        offset: 0xe4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    DMONITOR_CFG1:
+      at:
+        offset: 0xe9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ES_PRESCALE:
+      at:
+        offset: 0xf0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ES_EYE_SCAN_EN:
+      at:
+        offset: 0xf1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXDFE_HB_CFG0:
+      at:
+        offset: 0x33c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_HA_CFG1:
+      at:
+        offset: 0x338
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CPLL_INIT_CFG1:
+      at:
+        offset: 0x335
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RX_DDI_SEL:
+      at:
+        offset: 0x334
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    DEC_VALID_COMMA_ONLY:
+      at:
+        offset: 0x334
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    DEC_MCOMMA_DETECT:
+      at:
+        offset: 0x334
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CPLL_CFG1:
+      at:
+        offset: 0x330
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CPLL_CFG0:
+      at:
+        offset: 0x32c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CHAN_BOND_SEQ_1_2:
+      at:
+        offset: 0x328
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_HA_CFG0:
+      at:
+        offset: 0x320
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H9_CFG1:
+      at:
+        offset: 0x31c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RX_PROGDIV_CFG:
+      at:
+        offset: 0x318
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H9_CFG0:
+      at:
+        offset: 0x314
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PCIE_RXPCS_CFG_GEN3:
+      at:
+        offset: 0x310
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PCIE_BUFG_DIV_CTRL:
+      at:
+        offset: 0x30c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H8_CFG1:
+      at:
+        offset: 0x308
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H8_CFG0:
+      at:
+        offset: 0x304
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H7_CFG1:
+      at:
+        offset: 0x300
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXPHBEACON_CFG:
+      at:
+        offset: 0x2fc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXPHSLIP_CFG:
+      at:
+        offset: 0x2f8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXPHSAMP_CFG:
+      at:
+        offset: 0x2f4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    CPLL_CFG2:
+      at:
+        offset: 0x2f0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TXGBOX_FIFO_INIT_RD_ADDR:
+      at:
+        offset: 0x2ed
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_SAMPLE_PERIOD:
+      at:
+        offset: 0x2ec
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    RXGBOX_FIFO_INIT_RD_ADDR:
+      at:
+        offset: 0x2ec
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RX_SAMPLE_PERIOD:
+      at:
+        offset: 0x2ec
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDI_REALIGN_WAIT:
+      at:
+        offset: 0x2e8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    DDI_CTRL:
+      at:
+        offset: 0x2e8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXDFE_H7_CFG0:
+      at:
+        offset: 0x2e4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H6_CFG1:
+      at:
+        offset: 0x2e0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H6_CFG0:
+      at:
+        offset: 0x2dc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TX_DCD_CFG:
+      at:
+        offset: 0x2d9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TX_DCD_EN:
+      at:
+        offset: 0x2d9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_EML_PHI_TUNE:
+      at:
+        offset: 0x2d9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CPLL_CFG3:
+      at:
+        offset: 0x2d8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXDFE_H5_CFG1:
+      at:
+        offset: 0x2d4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PROCESS_PAR:
+      at:
+        offset: 0x2d1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TEMPERATUR_PAR:
+      at:
+        offset: 0x2d1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TX_MODE_SEL:
+      at:
+        offset: 0x2d0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TX_SARC_LPBK_ENB:
+      at:
+        offset: 0x2d0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RXDFE_H5_CFG0:
+      at:
+        offset: 0x2cc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H4_CFG1:
+      at:
+        offset: 0x2c8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H4_CFG0:
+      at:
+        offset: 0x2c4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H3_CFG1:
+      at:
+        offset: 0x2c0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    DFE_D_X_REL_POS:
+      at:
+        offset: 0x2bd
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    DFE_VCM_COMP_EN:
+      at:
+        offset: 0x2bd
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    GM_BIAS_SELECT:
+      at:
+        offset: 0x2bd
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    EVODD_PHI_CFG:
+      at:
+        offset: 0x2bc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_H3_CFG0:
+      at:
+        offset: 0x2b8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PLL_SEL_MODE_GEN3:
+      at:
+        offset: 0x2b5
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    PLL_SEL_MODE_GEN12:
+      at:
+        offset: 0x2b5
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RATE_SW_USE_DRP:
+      at:
+        offset: 0x2b5
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXPI_LPM:
+      at:
+        offset: 0x2b4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RXPI_VREFSEL:
+      at:
+        offset: 0x2b4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_CLK_SLIP_OVRD:
+      at:
+        offset: 0x2b0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    PCS_RSVD1:
+      at:
+        offset: 0x2b0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PCIE_TXPMA_CFG:
+      at:
+        offset: 0x2ac
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PCIE_TXPCS_CFG_GEN3:
+      at:
+        offset: 0x2a8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    PCIE_RXPMA_CFG:
+      at:
+        offset: 0x2a4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_CFG5:
+      at:
+        offset: 0x2a0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_CFG5_GEN3:
+      at:
+        offset: 0x29c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_CFG4_GEN3:
+      at:
+        offset: 0x298
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_CFG3_GEN3:
+      at:
+        offset: 0x294
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_CFG2:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_CFG2_GEN3:
+      at:
+        offset: 0x290
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_CFG1_GEN3:
+      at:
+        offset: 0x28c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_CFG0_GEN3:
+      at:
+        offset: 0x288
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_GC_CFG2:
+      at:
+        offset: 0x284
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_GC_CFG1:
+      at:
+        offset: 0x280
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_GC_CFG0:
+      at:
+        offset: 0x27c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_UT_CFG0:
+      at:
+        offset: 0x278
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXPI_CFG1:
+      at:
+        offset: 0x275
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    RXPI_CFG2:
+      at:
+        offset: 0x275
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RXPI_CFG3:
+      at:
+        offset: 0x275
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RXPI_CFG4:
+      at:
+        offset: 0x275
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RXPI_CFG5:
+      at:
+        offset: 0x275
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXPI_CFG6:
+      at:
+        offset: 0x274
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    RXPI_CFG0:
+      at:
+        offset: 0x274
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    TXPI_CFG0:
+      at:
+        offset: 0x271
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    TXPI_CFG1:
+      at:
+        offset: 0x271
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TXPI_CFG2:
+      at:
+        offset: 0x270
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    TXPI_CFG3:
+      at:
+        offset: 0x270
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    TXPI_CFG4:
+      at:
+        offset: 0x270
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TXPI_CFG5:
+      at:
+        offset: 0x270
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_DFELPM_KLKH_AGC_STUP_EN:
+      at:
+        offset: 0x26d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    RX_DFELPM_CFG0:
+      at:
+        offset: 0x26d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RX_DFELPM_CFG1:
+      at:
+        offset: 0x26d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_DFE_KL_LPM_KH_CFG0:
+      at:
+        offset: 0x26d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RX_DFE_KL_LPM_KH_CFG1:
+      at:
+        offset: 0x26c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TXPI_PPM_CFG:
+      at:
+        offset: 0x268
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    GEARBOX_MODE:
+      at:
+        offset: 0x265
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    TXPI_SYNFREQ_PPM:
+      at:
+        offset: 0x265
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TXPI_PPMCLK_SEL:
+      at:
+        offset: 0x264
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    TXPI_INVSTROBE_SEL:
+      at:
+        offset: 0x264
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    TXPI_GRAY_SEL:
+      at:
+        offset: 0x264
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TXPI_LPM:
+      at:
+        offset: 0x264
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    TXPI_VREFSEL:
+      at:
+        offset: 0x264
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RXDFE_HE_CFG1:
+      at:
+        offset: 0x260
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RX_AFE_CM_EN:
+      at:
+        offset: 0x25d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_CAPFF_SARC_ENB:
+      at:
+        offset: 0x25d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RX_EYESCAN_VS_NEG_DIR:
+      at:
+        offset: 0x25d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_EYESCAN_VS_UT_SIGN:
+      at:
+        offset: 0x25d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RX_EYESCAN_VS_CODE:
+      at:
+        offset: 0x25c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_EYESCAN_VS_RANGE:
+      at:
+        offset: 0x25c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PMA_RSV1:
+      at:
+        offset: 0x254
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ES_CLK_PHASE_SEL:
+      at:
+        offset: 0x251
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    USE_PCS_CLK_PHASE_SEL:
+      at:
+        offset: 0x251
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RXCFOK_CFG0:
+      at:
+        offset: 0x24c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ADAPT_CFG1:
+      at:
+        offset: 0x248
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ADAPT_CFG0:
+      at:
+        offset: 0x244
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_UT_CFG1:
+      at:
+        offset: 0x240
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_VP_CFG1:
+      at:
+        offset: 0x23c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_VP_CFG0:
+      at:
+        offset: 0x238
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFELPM_KL_CFG2:
+      at:
+        offset: 0x234
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ACJTAG_MODE:
+      at:
+        offset: 0x231
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    ACJTAG_DEBUG_MODE:
+      at:
+        offset: 0x231
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    ACJTAG_RESET:
+      at:
+        offset: 0x231
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    RESET_POWERSAVE_DISABLE:
+      at:
+        offset: 0x231
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RX_TUNE_AFE_OS:
+      at:
+        offset: 0x231
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_DFE_KL_LPM_KL_CFG0:
+      at:
+        offset: 0x231
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RX_DFE_KL_LPM_KL_CFG1:
+      at:
+        offset: 0x230
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TXSYNC_MULTILANE:
+      at:
+        offset: 0x22d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RXSYNC_MULTILANE:
+      at:
+        offset: 0x22d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RX_CTLE3_LPF:
+      at:
+        offset: 0x22c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TX_PMADATA_OPT:
+      at:
+        offset: 0x229
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    RXSYNC_OVRD:
+      at:
+        offset: 0x229
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    TXSYNC_OVRD:
+      at:
+        offset: 0x229
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TX_IDLE_DATA_ZERO:
+      at:
+        offset: 0x229
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    A_RXOSCALRESET:
+      at:
+        offset: 0x229
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RXOOB_CLK_CFG:
+      at:
+        offset: 0x229
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TXSYNC_SKIP_DA:
+      at:
+        offset: 0x229
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RXSYNC_SKIP_DA:
+      at:
+        offset: 0x229
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXOSCALRESET_TIME:
+      at:
+        offset: 0x228
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXPRBS_LINKACQ_CNT:
+      at:
+        offset: 0x224
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TX_QPI_STATUS_EN:
+      at:
+        offset: 0x215
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TX_INT_DATAWIDTH:
+      at:
+        offset: 0x215
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RXDFE_HD_CFG1:
+      at:
+        offset: 0x210
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TX_MARGIN_LOW_3:
+      at:
+        offset: 0x20d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_MARGIN_LOW_4:
+      at:
+        offset: 0x20c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_MARGIN_LOW_1:
+      at:
+        offset: 0x209
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_MARGIN_LOW_2:
+      at:
+        offset: 0x208
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_MARGIN_FULL_4:
+      at:
+        offset: 0x205
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_MARGIN_LOW_0:
+      at:
+        offset: 0x204
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_MARGIN_FULL_2:
+      at:
+        offset: 0x201
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_MARGIN_FULL_3:
+      at:
+        offset: 0x200
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_MARGIN_FULL_0:
+      at:
+        offset: 0x1fd
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_MARGIN_FULL_1:
+      at:
+        offset: 0x1fc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_CLKMUX_EN:
+      at:
+        offset: 0x1f9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    TX_LOOPBACK_DRIVE_HIZ:
+      at:
+        offset: 0x1f9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    TX_DRIVE_MODE:
+      at:
+        offset: 0x1f9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TX_EIDLE_ASSERT_DELAY:
+      at:
+        offset: 0x1f8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TX_EIDLE_DEASSERT_DELAY:
+      at:
+        offset: 0x1f8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TX_RXDETECT_CFG:
+      at:
+        offset: 0x1f4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TX_MAINCURSOR_SEL:
+      at:
+        offset: 0x1f1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    TXGEARBOX_EN:
+      at:
+        offset: 0x1f1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    TXOUT_DIV:
+      at:
+        offset: 0x1f1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TXBUF_EN:
+      at:
+        offset: 0x1f0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    TXBUF_RESET_ON_RATE_CHANGE:
+      at:
+        offset: 0x1f0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    TX_RXDETECT_REF:
+      at:
+        offset: 0x1f0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    TXFIFO_ADDR_CFG:
+      at:
+        offset: 0x1f0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TX_DEEMPH0:
+      at:
+        offset: 0x1ed
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TX_DEEMPH1:
+      at:
+        offset: 0x1ec
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TX_CLK25_DIV:
+      at:
+        offset: 0x1e9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    TX_XCLK_SEL:
+      at:
+        offset: 0x1e9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TX_DATA_WIDTH:
+      at:
+        offset: 0x1e8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TST_RSV0:
+      at:
+        offset: 0x1e5
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TST_RSV1:
+      at:
+        offset: 0x1e4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TRANS_TIME_RATE:
+      at:
+        offset: 0x1e1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PD_TRANS_TIME_NONE_P2:
+      at:
+        offset: 0x1dd
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PD_TRANS_TIME_TO_P2:
+      at:
+        offset: 0x1dc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PD_TRANS_TIME_FROM_P2:
+      at:
+        offset: 0x1d8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    TERM_RCAL_OVRD:
+      at:
+        offset: 0x1d8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RXDFE_HF_CFG1:
+      at:
+        offset: 0x1d4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TERM_RCAL_CFG:
+      at:
+        offset: 0x1d0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TXPH_CFG:
+      at:
+        offset: 0x1cc
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXCDR_LOCK_CFG2:
+      at:
+        offset: 0x1c8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TXPH_MONITOR_SEL:
+      at:
+        offset: 0x1c4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    TAPDLY_SET_TX:
+      at:
+        offset: 0x1c4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TXDLY_CFG:
+      at:
+        offset: 0x1c0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TXPHDLY_CFG:
+      at:
+        offset: 0x1b8
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RX_CLK25_DIV:
+      at:
+        offset: 0x1b4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    SATA_MAX_INIT:
+      at:
+        offset: 0x1b1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SATA_MAX_WAKE:
+      at:
+        offset: 0x1b0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    SATA_MAX_BURST:
+      at:
+        offset: 0x1ad
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SAS_MAX_COM:
+      at:
+        offset: 0x1ac
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    SATA_MIN_INIT:
+      at:
+        offset: 0x1a9
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SATA_MIN_WAKE:
+      at:
+        offset: 0x1a8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    SATA_MIN_BURST:
+      at:
+        offset: 0x1a5
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SAS_MIN_COM:
+      at:
+        offset: 0x1a4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    SATA_BURST_VAL:
+      at:
+        offset: 0x1a1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    SATA_BURST_SEQ_LEN:
+      at:
+        offset: 0x1a0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    SATA_EIDLE_VAL:
+      at:
+        offset: 0x1a0
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXBUF_EIDLE_HI_CNT:
+      at:
+        offset: 0x19d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RXCDR_HOLD_DURING_EIDLE:
+      at:
+        offset: 0x19d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RX_DFE_LPM_HOLD_DURING_EIDLE:
+      at:
+        offset: 0x19d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RXBUF_EIDLE_LO_CNT:
+      at:
+        offset: 0x19c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RXBUF_RESET_ON_EIDLE:
+      at:
+        offset: 0x19c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RXCDR_FR_RESET_ON_EIDLE:
+      at:
+        offset: 0x19c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RXCDR_PH_RESET_ON_EIDLE:
+      at:
+        offset: 0x19c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RXBUF_THRESH_OVRD:
+      at:
+        offset: 0x199
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    RXBUF_RESET_ON_COMMAALIGN:
+      at:
+        offset: 0x199
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    RXBUF_RESET_ON_RATE_CHANGE:
+      at:
+        offset: 0x199
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    RXBUF_RESET_ON_CB_CHANGE:
+      at:
+        offset: 0x199
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RXBUF_THRESH_UNDFLW:
+      at:
+        offset: 0x198
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    RX_CLKMUX_EN:
+      at:
+        offset: 0x198
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    RX_DISPERR_SEQ_MATCH:
+      at:
+        offset: 0x198
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RXBUF_ADDR_MODE:
+      at:
+        offset: 0x198
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RX_WIDEMODE_CDR:
+      at:
+        offset: 0x198
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_INT_DATAWIDTH:
+      at:
+        offset: 0x198
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXBUF_THRESH_OVFLW:
+      at:
+        offset: 0x195
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    DMONITOR_CFG0:
+      at:
+        offset: 0x194
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RX_SIG_VALID_DLY:
+      at:
+        offset: 0x191
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RXSLIDE_MODE:
+      at:
+        offset: 0x191
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RXPRBS_ERR_LOOPBACK:
+      at:
+        offset: 0x191
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXSLIDE_AUTO_WAIT:
+      at:
+        offset: 0x190
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RXBUF_EN:
+      at:
+        offset: 0x190
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RX_XCLK_SEL:
+      at:
+        offset: 0x190
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RXGEARBOX_EN:
+      at:
+        offset: 0x190
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CBCC_DATA_SOURCE_SEL:
+      at:
+        offset: 0x18d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    OOB_PWRUP:
+      at:
+        offset: 0x18d
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    RXOOB_CFG:
+      at:
+        offset: 0x18c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    RXOUT_DIV:
+      at:
+        offset: 0x18c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RX_SUM_DFETAPREP_EN:
+      at:
+        offset: 0x189
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    RX_SUM_VCM_OVWR:
+      at:
+        offset: 0x189
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    RX_SUM_IREF_TUNE:
+      at:
+        offset: 0x189
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RX_SUM_RES_CTRL:
+      at:
+        offset: 0x188
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    RX_SUM_VCMTUNE:
+      at:
+        offset: 0x188
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RX_SUM_VREF_TUNE:
+      at:
+        offset: 0x188
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RXPH_MONITOR_SEL:
+      at:
+        offset: 0x185
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    RX_CM_BUF_PD:
+      at:
+        offset: 0x185
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_CM_BUF_CFG:
+      at:
+        offset: 0x184
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    RX_CM_TRIM:
+      at:
+        offset: 0x184
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_CM_SEL:
+      at:
+        offset: 0x184
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PCS_RSVD0:
+      at:
+        offset: 0x180
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RX_BIAS_CFG0:
+      at:
+        offset: 0x17c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_HD_CFG0:
+      at:
+        offset: 0x178
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_HF_CFG0:
+      at:
+        offset: 0x174
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDLY_LCFG:
+      at:
+        offset: 0x170
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDLY_CFG:
+      at:
+        offset: 0x16c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_OS_CFG1:
+      at:
+        offset: 0x168
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXPHDLY_CFG:
+      at:
+        offset: 0x164
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_OS_CFG0:
+      at:
+        offset: 0x160
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TXDLY_LCFG:
+      at:
+        offset: 0x15c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ALIGN_PCOMMA_DET:
+      at:
+        offset: 0x159
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    ALIGN_PCOMMA_VALUE:
+      at:
+        offset: 0x158
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    LOCAL_MASTER:
+      at:
+        offset: 0x155
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    PCS_PCIE_EN:
+      at:
+        offset: 0x155
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    ALIGN_MCOMMA_DET:
+      at:
+        offset: 0x155
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    ALIGN_MCOMMA_VALUE:
+      at:
+        offset: 0x154
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_CFG:
+      at:
+        offset: 0x14c
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RX_EN_HI_LR:
+      at:
+        offset: 0x149
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_DFE_AGC_CFG1:
+      at:
+        offset: 0x148
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RX_DFE_AGC_CFG0:
+      at:
+        offset: 0x148
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ES_PMA_CFG:
+      at:
+        offset: 0x144
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_HC_CFG1:
+      at:
+        offset: 0x140
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ES_HORZ_OFFSET:
+      at:
+        offset: 0x13c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    FTS_LANE_DESKEW_CFG:
+      at:
+        offset: 0x13c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    FTS_LANE_DESKEW_EN:
+      at:
+        offset: 0x138
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    FTS_DESKEW_SEQ_ENABLE:
+      at:
+        offset: 0x138
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ES_SDATA_MASK:
+      at:
+        offset: 0x124
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ES_QUAL_MASK:
+      at:
+        offset: 0x110
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ES_QUALIFIER:
+      at:
+        offset: 0xfc
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    TX_PROGDIV_CFG:
+      at:
+        offset: 0xf8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    RXDFE_HC_CFG0:
+      at:
+        offset: 0xf4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    ES_CONTROL:
+      at:
+        offset: 0xf1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    ES_ERRDET_EN:
+      at:
+        offset: 0xf1
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################

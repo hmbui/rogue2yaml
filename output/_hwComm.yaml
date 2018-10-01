@@ -1,0 +1,129 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _hwComm.yaml 
+
+
+HwComm: &HwComm
+  description: Hardware-to-Hardware Communication Module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    TxFrameRateRaw:
+      at:
+        offset: 0x0
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxFrameRateMaxRaw:
+      at:
+        offset: 0x4
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxFrameRateMinRaw:
+      at:
+        offset: 0x8
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxBackPressureCnt:
+      at:
+        offset: 0xc
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxFrameRateRaw:
+      at:
+        offset: 0x20
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxFrameRateMaxRaw:
+      at:
+        offset: 0x24
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxFrameRateMinRaw:
+      at:
+        offset: 0x28
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxErrDropCnt:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    TxEnable:
+      at:
+        offset: 0x80
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TxRateRaw:
+      at:
+        offset: 0x84
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    HwDacSel:
+      at:
+        offset: 0x8c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################

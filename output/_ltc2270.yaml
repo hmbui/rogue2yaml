@@ -1,0 +1,177 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _ltc2270.yaml 
+
+
+Ltc2270: &Ltc2270
+  description: Ltc2270
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    DacReset:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: DacReset
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    PwrDwn:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: PwrDwn
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ClkInv:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: ClkInv
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    ClkPhase:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: ClkPhase
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    Dcs:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Dcs
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    ILvds:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: ILvds
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    TermOn:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: TermOn
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    OutOff:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: OutOff
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    OutMode:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: OutMode
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    OutTest:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: OutTest
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    Abp:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Abp
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    Rand:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Rand
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TwoComp:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: TwoComp
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    adcData:
+      at:
+        offset: 0x19c
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 16
+      mode: RO
+    ################################################################################
+    delayRdy:
+      at:
+        offset: 0x1fc
+        byteOrder: BE
+      description: delayOut.rdy
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    delayData:
+      at:
+        offset: 0x21c
+        byteOrder: BE
+        nelms: 2
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################

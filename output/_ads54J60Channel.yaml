@@ -1,0 +1,478 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _ads54J60Channel.yaml 
+
+
+Ads54J60Channel: &Ads54J60Channel
+  description: Ads54J60Channel Module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    DECFIL_MODE3:
+      at:
+        offset: 0x4104
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    DECFIL_EN:
+      at:
+        offset: 0x4104
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    DECFIL_MODE_2_0:
+      at:
+        offset: 0x4104
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    NYQUIST_ZONE:
+      at:
+        offset: 0x4108
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FORMAT_SEL:
+      at:
+        offset: 0x410c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DIGITAL_GAIN:
+      at:
+        offset: 0x4110
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FORMAT_EN:
+      at:
+        offset: 0x412c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    DEC_MOD_EN:
+      at:
+        offset: 0x4134
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    CTRL_NYQUIST:
+      at:
+        offset: 0x4138
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    BUS_REORDER_EN1:
+      at:
+        offset: 0x4148
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    DIG_GAIN_EN:
+      at:
+        offset: 0x4148
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BUS_REORDER_EN2:
+      at:
+        offset: 0x41c8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    LSB_SEL_EN:
+      at:
+        offset: 0x42ac
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    LSB_SELECT:
+      at:
+        offset: 0x42b4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CTRL_K:
+      at:
+        offset: 0x8000
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    TESTMODE_EN:
+      at:
+        offset: 0x8000
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    FLIP_ADC_DATA:
+      at:
+        offset: 0x8000
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    LANE_ALIGN:
+      at:
+        offset: 0x8000
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    FRAME_ALIGN:
+      at:
+        offset: 0x8000
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_LINK_DIS:
+      at:
+        offset: 0x8000
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SYNC_REG:
+      at:
+        offset: 0x8004
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    SYNC_REG_EN:
+      at:
+        offset: 0x8004
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    JESD_FILTER:
+      at:
+        offset: 0x8004
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    JESD_MODE:
+      at:
+        offset: 0x8004
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    LINK_LAYER_TESTMODE:
+      at:
+        offset: 0x8008
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    LINK_LAYER_RPAT:
+      at:
+        offset: 0x8008
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    LMFC_MASK_RESET:
+      at:
+        offset: 0x8008
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    FORCE_LMFC_COUNT:
+      at:
+        offset: 0x800c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    LMFC_COUNT_INIT:
+      at:
+        offset: 0x800c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RELEASE_ILANE_SEQ:
+      at:
+        offset: 0x800c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SCRAMBLE_EN:
+      at:
+        offset: 0x8014
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    FRAMES_PER_MULTI_FRAME:
+      at:
+        offset: 0x8018
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SUBCLASS:
+      at:
+        offset: 0x801c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    AlwaysWrite0x1_A:
+      at:
+        offset: 0x8058
+        byteOrder: BE
+      description: Always set this bit to 1
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: WO
+    ################################################################################
+    LANE_SHARE:
+      at:
+        offset: 0x8058
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    DA_BUS_REORDER:
+      at:
+        offset: 0x80c4
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DB_BUS_REORDER:
+      at:
+        offset: 0x80c8
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SE_EMP_LANE_1:
+      at:
+        offset: 0xc048
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    AlwaysWrite0x1_B:
+      at:
+        offset: 0xc048
+        byteOrder: BE
+      description: Always set this bit to 1
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: WO
+    ################################################################################
+    SE_EMP_LANE_0:
+      at:
+        offset: 0xc04c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SE_EMP_LANE_2:
+      at:
+        offset: 0xc050
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SE_EMP_LANE_3:
+      at:
+        offset: 0xc054
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    JESD_PLL_MODE:
+      at:
+        offset: 0xc058
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PLL_RESET:
+      at:
+        offset: 0xc05c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    FOVR_CHA:
+      at:
+        offset: 0xc068
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    JESD_SWING:
+      at:
+        offset: 0xc06c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    FOVR_CHA_EN:
+      at:
+        offset: 0xc06c
+        byteOrder: BE
+      description: 
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################

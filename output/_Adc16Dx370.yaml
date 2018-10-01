@@ -1,0 +1,373 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _Adc16Dx370.yaml 
+
+
+Adc16Dx370: &Adc16Dx370
+  description: ADC16Dx370 Module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    AdcReg_0x0000:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0002:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0003:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    AdcReg_0x0004:
+      at:
+        offset: 0xf
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    AdcReg_0x0005:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    AdcReg_0x0006:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    AdcReg_0x000C:
+      at:
+        offset: 0x30
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    AdcReg_0x000D:
+      at:
+        offset: 0x34
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    AdcReg_0x0010:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0012:
+      at:
+        offset: 0x48
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0013:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0014:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0015:
+      at:
+        offset: 0x54
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0019:
+      at:
+        offset: 0x64
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x003B:
+      at:
+        offset: 0xec
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x003C:
+      at:
+        offset: 0xf0
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x003D:
+      at:
+        offset: 0xf4
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0047:
+      at:
+        offset: 0x11c
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0060:
+      at:
+        offset: 0x180
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0061:
+      at:
+        offset: 0x184
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0062:
+      at:
+        offset: 0x188
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdcReg_0x0063:
+      at:
+        offset: 0x18c
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    AdcReg_0x0070:
+      at:
+        offset: 0x1c0
+        byteOrder: BE
+      description: ADC Control Registers
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    ID_DEVICE_TYPE:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: ID_DEVICE_TYPE
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    ID_PROD_UPPER:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: ID_PROD_UPPER
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    ID_PROD_LOWER:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: ID_PROD_LOWER
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    ID_MASKREV:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: ID_MASKREV
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    ID_VNDR_UPPER:
+      at:
+        offset: 0x30
+        byteOrder: BE
+      description: ID_VNDR_UPPER
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    ID_VNDR_LOWER:
+      at:
+        offset: 0x34
+        byteOrder: BE
+      description: ID_VNDR_LOWER
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    Clock_ready:
+      at:
+        offset: 0x1b0
+        byteOrder: BE
+      description: Clock_ready
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    Calibration_done:
+      at:
+        offset: 0x1b0
+        byteOrder: BE
+      description: Calibration_done
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    PLL_lock:
+      at:
+        offset: 0x1b0
+        byteOrder: BE
+      description: PLL_lock
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RO
+    ################################################################################
+    Aligned_to_sysref:
+      at:
+        offset: 0x1b0
+        byteOrder: BE
+      description: Aligned_to_sysref
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    Realigned_to_sysref:
+      at:
+        offset: 0x1b0
+        byteOrder: BE
+      description: Realigned_to_sysref
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    Sync_form_FPGA:
+      at:
+        offset: 0x1b0
+        byteOrder: BE
+      description: Sync_form_FPGA
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RO
+    ################################################################################
+    Link_active:
+      at:
+        offset: 0x1b0
+        byteOrder: BE
+      description: Link_active
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RO
+    ################################################################################
+    PowerDown:
+      at:
+        offset: 0x0
+      name: PowerDown
+      description: PowerDown
+      class: SequenceCommand
+    ################################################################################
+    PowerUp:
+      at:
+        offset: 0x0
+      name: PowerUp
+      description: PowerUp
+      class: SequenceCommand
+    ################################################################################
+    CalibrateAdc:
+      at:
+        offset: 0x0
+      name: CalibrateAdc
+      description: CalibrateAdc
+      class: SequenceCommand
+    ################################################################################

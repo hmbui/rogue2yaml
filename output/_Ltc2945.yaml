@@ -1,0 +1,463 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _Ltc2945.yaml 
+
+
+Ltc2945: &Ltc2945
+  description: Ltc2945
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    Control:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Controls ADC Operation Mode and Test Mode
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    Alert:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: Selects Which Faults Generate Alerts
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    Status:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: System Status Information
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    Fault:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: Fault Log
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PowerMsb2:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Power MSB2 Data
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    PowerMsb1:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: Power MSB1 Data
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    PowerLsb:
+      at:
+        offset: 0x1c
+        byteOrder: BE
+      description: Power LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    MaxPowerMsb2:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Maximum Power MSB2 Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxPowerMsb1:
+      at:
+        offset: 0x24
+        byteOrder: BE
+      description: Maximum Power MSB1 Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxPowerLsb:
+      at:
+        offset: 0x28
+        byteOrder: BE
+      description: Maximum Power LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinPowerMsb2:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+      description: Minimum Power MSB2 Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinPowerMsb1:
+      at:
+        offset: 0x30
+        byteOrder: BE
+      description: Minimum Power MSB1 Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinPowerLsb:
+      at:
+        offset: 0x34
+        byteOrder: BE
+      description: Minimum Power LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxPowerThresholdMsb2:
+      at:
+        offset: 0x38
+        byteOrder: BE
+      description: Maximum Power Threshold MSB2 to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxPowerThresholdMsb1:
+      at:
+        offset: 0x3c
+        byteOrder: BE
+      description: Maximum Power Threshold MSB1 to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxPowerThresholdLsb:
+      at:
+        offset: 0x40
+        byteOrder: BE
+      description: Maximum Power Threshold LSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinPowerThresholdMsb2:
+      at:
+        offset: 0x44
+        byteOrder: BE
+      description: Minimum Power Threshold MSB2 to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinPowerThresholdMsb1:
+      at:
+        offset: 0x48
+        byteOrder: BE
+      description: Minimum Power Threshold MSB1 to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinPowerThresholdLsb:
+      at:
+        offset: 0x4c
+        byteOrder: BE
+      description: Minimum Power Threshold LSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SenseMsb:
+      at:
+        offset: 0x50
+        byteOrder: BE
+      description: SENSE MSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    SenseLsb:
+      at:
+        offset: 0x54
+        byteOrder: BE
+      description: SENSE LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    MaxSenseMsb:
+      at:
+        offset: 0x58
+        byteOrder: BE
+      description: Maximum SENSE MSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxSenseLsb:
+      at:
+        offset: 0x5c
+        byteOrder: BE
+      description: Maximum SENSE LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinSenseMsb:
+      at:
+        offset: 0x60
+        byteOrder: BE
+      description: Minimum SENSE MSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinSenseLsb:
+      at:
+        offset: 0x64
+        byteOrder: BE
+      description: Minimum SENSE LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxSenseThresholdMsb:
+      at:
+        offset: 0x68
+        byteOrder: BE
+      description: Maximum SENSE Threshold MSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxSenseThresholdLsb:
+      at:
+        offset: 0x6c
+        byteOrder: BE
+      description: Maximum SENSE Threshold LSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinSenseThresholdMsb:
+      at:
+        offset: 0x70
+        byteOrder: BE
+      description: Minimum SENSE Threshold MSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinSenseThresholdLsb:
+      at:
+        offset: 0x74
+        byteOrder: BE
+      description: Minimum SENSE Threshold LSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    VinMsb:
+      at:
+        offset: 0x78
+        byteOrder: BE
+      description: ADC VIN MSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    VinLsb:
+      at:
+        offset: 0x7c
+        byteOrder: BE
+      description: ADC VIN LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    MaxVinMsb:
+      at:
+        offset: 0x80
+        byteOrder: BE
+      description: Maximum ADC VIN MSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxVinLsb:
+      at:
+        offset: 0x84
+        byteOrder: BE
+      description: Maximum ADC VIN LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinVinMsb:
+      at:
+        offset: 0x88
+        byteOrder: BE
+      description: Minimum ADC VIN MSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinVinLsb:
+      at:
+        offset: 0x8c
+        byteOrder: BE
+      description: Minimum ADC VIN LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxVinThresholdMsb:
+      at:
+        offset: 0x90
+        byteOrder: BE
+      description: Maximum ADC VIN Threshold MSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxVinThresholdLsb:
+      at:
+        offset: 0x94
+        byteOrder: BE
+      description: Maximum ADC VIN Threshold LSB Dto Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinVinThresholdMsb:
+      at:
+        offset: 0x98
+        byteOrder: BE
+      description: Minimum ADC VIN Threshold MSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinVinThresholdLsb:
+      at:
+        offset: 0x9c
+        byteOrder: BE
+      description: Minimum ADC VIN Threshold LSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    AdinMsb:
+      at:
+        offset: 0xa0
+        byteOrder: BE
+      description: ADIN MSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    AdinLsb:
+      at:
+        offset: 0xa4
+        byteOrder: BE
+      description: ADIN LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    MaxAdinMsb:
+      at:
+        offset: 0xa8
+        byteOrder: BE
+      description: Maximum ADIN MSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxAdinLsb:
+      at:
+        offset: 0xac
+        byteOrder: BE
+      description: Maximum ADIN LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinAdinMsb:
+      at:
+        offset: 0xb0
+        byteOrder: BE
+      description: Minimum ADIN MSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinAdinLsb:
+      at:
+        offset: 0xb4
+        byteOrder: BE
+      description: Minimum ADIN LSB Data
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxAdinThresholdMsb:
+      at:
+        offset: 0xb8
+        byteOrder: BE
+      description: Maximum ADIN Threshold MSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MaxAdinThresholdLsb:
+      at:
+        offset: 0xbc
+        byteOrder: BE
+      description: Maximum ADIN Threshold LSB Dto Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinAdinThresholdMsb:
+      at:
+        offset: 0xc0
+        byteOrder: BE
+      description: Minimum ADIN Threshold MSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MinAdinThresholdLsb:
+      at:
+        offset: 0xc4
+        byteOrder: BE
+      description: Minimum ADIN Threshold LSB to Generate Alert
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
