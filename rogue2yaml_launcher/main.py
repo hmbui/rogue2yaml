@@ -16,8 +16,6 @@ from version import CPSW_YAML_SCHEMA_VERSION
 from rogue2yaml.converter_logging import logging
 logger = logging.getLogger(__name__)
 
-from rogue2yaml.yaml_converter import YamlConverter
-
 
 def main():
     logger.info("Starting a new conversion session...\n")
@@ -138,6 +136,8 @@ def _convert_files(output_file_dir, success_files, failure_files):
     failure_files : list
         A name list of files that are unsuccessfully converted, and files that are skipped from being converted
     """
+    from rogue2yaml.yaml_converter import YamlConverter
+
     for _, _, filenames in os.walk("input"):
         for filename in filenames:
             output_file_found = False
