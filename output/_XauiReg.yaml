@@ -1,0 +1,122 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _XauiReg.yaml 
+
+
+XauiReg: &XauiReg
+  description: XauiReg
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    StatusCounters:
+      at:
+        offset: 0x0
+        byteOrder: BE
+        nelms: 2
+      description: Status Counters
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    StatusVector:
+      at:
+        offset: 0x100
+        byteOrder: BE
+      description: Status Vector
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    MacAddress:
+      at:
+        offset: 0x200
+        byteOrder: BE
+      description: MAC Address (big-Endian)
+      class: IntField
+      sizeBits: 48
+      mode: RO
+    ################################################################################
+    PauseTime:
+      at:
+        offset: 0x21c
+        byteOrder: BE
+      description: PauseTime
+      class: IntField
+      sizeBits: 16
+      mode: RO
+    ################################################################################
+    FilterEnable:
+      at:
+        offset: 0x228
+        byteOrder: BE
+      description: FilterEnable
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    PauseEnable:
+      at:
+        offset: 0x22c
+        byteOrder: BE
+      description: PauseEnable
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    ConfigVector:
+      at:
+        offset: 0x230
+        byteOrder: BE
+      description: ConfigVector
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RollOverEn:
+      at:
+        offset: 0xf00
+        byteOrder: BE
+      description: RollOverEn
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    CounterReset:
+      at:
+        offset: 0xff4
+        byteOrder: BE
+      description: CounterReset
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################
+    SoftReset:
+      at:
+        offset: 0xff8
+        byteOrder: BE
+      description: SoftReset
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################
+    HardReset:
+      at:
+        offset: 0xffc
+        byteOrder: BE
+      description: HardReset
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################

@@ -1,0 +1,1097 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _adc32Rf45Channel.yaml 
+
+
+Adc32Rf45Channel: &Adc32Rf45Channel
+  description: Adc32Rf45Channel Module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    SEL_EXT_EST:
+      at:
+        offset: 0x40d0
+        byteOrder: BE
+      description: This bit selects the external estimate for the offset correction
+        block
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FREEZE_OFFSET_CORR:
+      at:
+        offset: 0x41a0
+        byteOrder: BE
+      description: Use this bit to freeze the offset estimation process of the offset
+        corrector
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    AlwaysWrite0x1_A:
+      at:
+        offset: 0x41a0
+        byteOrder: BE
+      description: Always set this bit to 1
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: WO
+    ################################################################################
+    DIS_OFFSET_CORR:
+      at:
+        offset: 0x41a0
+        byteOrder: BE
+      description: 0 = Offset correction block is enabled, 1 = Offset correction block
+        is disabled
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    AlwaysWrite0x1_B:
+      at:
+        offset: 0x41a0
+        byteOrder: BE
+      description: Always set this bit to 1
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: WO
+    ################################################################################
+    DIGITAL_GAIN:
+      at:
+        offset: 0x8298
+        byteOrder: BE
+      description: These bits set the digital gain of the ADC output data prior to
+        decimation up to 11 dB
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    NQ_ZONE_EN:
+      at:
+        offset: 0xc288
+        byteOrder: BE
+      description: 0 = Nyquist zone specification disabled, 1 = Nyquist zone specification
+        enabled
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    NYQUIST_ZONE:
+      at:
+        offset: 0xc288
+        byteOrder: BE
+      description: These bits specify the operating Nyquist zone for the analog correction
+        loop
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CTRL_K:
+      at:
+        offset: 0x10004
+        byteOrder: BE
+      description: 0 = Default is five frames per multiframe, 1 = Frames per multiframe
+        can be set in register 06h
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    TESTMODE_EN:
+      at:
+        offset: 0x10004
+        byteOrder: BE
+      description: 0 = Test mode disabled, 1 = Test mode enabled
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    LANE_ALIGN:
+      at:
+        offset: 0x10004
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = Inserts lane alignment characters
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    FRAME_ALIGN:
+      at:
+        offset: 0x10004
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = Inserts frame alignment characters
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TX_LINK_DIS:
+      at:
+        offset: 0x10004
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = ILA disabled
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SYNC_REG:
+      at:
+        offset: 0x10008
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = ADC output data are replaced with K28.5
+        characters
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    SYNC_REG_EN:
+      at:
+        offset: 0x10008
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = SYNC control through the SPI is enabled
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    12BIT_MODE:
+      at:
+        offset: 0x10008
+        byteOrder: BE
+      description: 00 = Normal operation, 14-bit output, 01 & 10 = Unused, 11 = High-efficient
+        data packing enabled
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    JESD_MODE0:
+      at:
+        offset: 0x10008
+        byteOrder: BE
+      description: These bits select the configuration register to configure the correct
+        LMFS frame assemblies for different decimation settings;
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    LINK_LAYER_TESTMODE:
+      at:
+        offset: 0x1000c
+        byteOrder: BE
+      description: These bits generate a pattern
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    LINK_LAY_RPAT:
+      at:
+        offset: 0x1000c
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = Changes disparity
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    LMFC_MASK_RESET:
+      at:
+        offset: 0x1000c
+        byteOrder: BE
+      description: 0 = Normal operation
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    JESD_MODE1:
+      at:
+        offset: 0x1000c
+        byteOrder: BE
+      description: These bits select the configuration register to configure the correct
+        LMFS frame assemblies for different decimation settings
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    JESD_MODE2:
+      at:
+        offset: 0x1000c
+        byteOrder: BE
+      description: These bits select the configuration register to configure the correct
+        LMFS frame assemblies for different decimation settings
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RAMP_12BIT:
+      at:
+        offset: 0x1000c
+        byteOrder: BE
+      description: This bit enables the RAMP test pattern for 12-bit mode only (LMFS
+        = 82820): 0 = Normal data output, 1 = Digital output is the RAMP pattern
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    REL_ILA_SEQ:
+      at:
+        offset: 0x10010
+        byteOrder: BE
+      description: These bits delay the generation of the lane alignment sequence
+        by 0, 1, 2, or 3 multiframes after the code group synchronization
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SCRAMBLE_EN:
+      at:
+        offset: 0x10018
+        byteOrder: BE
+      description: 0 = Scrambling disabled, 1 = Scrambling enabled
+      class: IntField
+      sizeBits: 8
+      lsBit: 7
+      mode: RW
+    ################################################################################
+    FRAMES_PER_MULTIFRAME:
+      at:
+        offset: 0x1001c
+        byteOrder: BE
+      description: These bits set the number of multiframes. Actual K is the value
+        in hex + 1 (that is, 0Fh is K = 16).
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    40X_MODE:
+      at:
+        offset: 0x10058
+        byteOrder: BE
+      description: This register must be set for 40X mode operation: 000 = Register
+        is set for 20X and 80X mode, 111 = Register must be set for 40X mode
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    LANE0_POL:
+      at:
+        offset: 0x1005c
+        byteOrder: BE
+      description: 0 = Polarity as given in the pinout (noninverted), 1 = Inverts
+        polarity (positive, P, or negative, M)
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    LANE1_POL:
+      at:
+        offset: 0x1005c
+        byteOrder: BE
+      description: 0 = Polarity as given in the pinout (noninverted), 1 = Inverts
+        polarity (positive, P, or negative, M)
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    LANE2_POL:
+      at:
+        offset: 0x1005c
+        byteOrder: BE
+      description: 0 = Polarity as given in the pinout (noninverted), 1 = Inverts
+        polarity (positive, P, or negative, M)
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    LANE3_POL:
+      at:
+        offset: 0x1005c
+        byteOrder: BE
+      description: 0 = Polarity as given in the pinout (noninverted), 1 = Inverts
+        polarity (positive, P, or negative, M)
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SEL_EMP_LANE0:
+      at:
+        offset: 0x100c8
+        byteOrder: BE
+      description: These bits select the amount of de-emphasis for the JESD output
+        transmitter.
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SEL_EMP_LANE1:
+      at:
+        offset: 0x100cc
+        byteOrder: BE
+      description: These bits select the amount of de-emphasis for the JESD output
+        transmitter.
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SEL_EMP_LANE2:
+      at:
+        offset: 0x100d0
+        byteOrder: BE
+      description: These bits select the amount of de-emphasis for the JESD output
+        transmitter.
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SEL_EMP_LANE3:
+      at:
+        offset: 0x100d4
+        byteOrder: BE
+      description: These bits select the amount of de-emphasis for the JESD output
+        transmitter.
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    CMOS_SYNCB:
+      at:
+        offset: 0x100d8
+        byteOrder: BE
+      description: 0 = Differential SYNCB input, 1 = Single-ended SYNCB input using
+        pin 63
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    PLL_MODE:
+      at:
+        offset: 0x100dc
+        byteOrder: BE
+      description: These bits select the PLL multiplication factor
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    MASK_CLKDIV_SYSREF:
+      at:
+        offset: 0x100f8
+        byteOrder: BE
+      description: 0 = Input clock divider is reset when SYSREF is asserted, 1 = Input
+        clock divider ignores SYSREF assertions
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    MASK_NCO_SYSREF:
+      at:
+        offset: 0x100f8
+        byteOrder: BE
+      description: 0 = NCO phase and LMFC counter are reset when SYSREF is asserted,
+        1 = NCO and LMFC counter ignore SYSREF assertions
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    DDC_EN:
+      at:
+        offset: 0x14000
+        byteOrder: BE
+      description: 0 = Bypass mode (DDC disabled), 1 = Decimation filter enabled
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DECIM_FACTOR:
+      at:
+        offset: 0x14004
+        byteOrder: BE
+      description: These bits configure the decimation filter setting.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DUAL_BAND_EN:
+      at:
+        offset: 0x14008
+        byteOrder: BE
+      description: 0 = Single-band DDC, 1 = Dual-band DDC
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    REAL_OUT_EN:
+      at:
+        offset: 0x14014
+        byteOrder: BE
+      description: 0 = Complex output format, 1 = Real output format
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC_MUX:
+      at:
+        offset: 0x14018
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = DDC block takes input from the alternate
+        ADC
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC0_NCO1_LSB:
+      at:
+        offset: 0x1401c
+        byteOrder: BE
+      description: These bits are the LSB of the NCO frequency word for NCO1 of DDC0
+        (band 1).
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC0_NCO1_MSB:
+      at:
+        offset: 0x14020
+        byteOrder: BE
+      description: These bits are the MSB of the NCO frequency word for NCO1 of DDC0
+        (band 1).
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC0_NCO2_LSB:
+      at:
+        offset: 0x14024
+        byteOrder: BE
+      description: These bits are the LSB of the NCO frequency word for NCO2 of DDC0
+        (band 1).
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC0_NCO2_MSB:
+      at:
+        offset: 0x14028
+        byteOrder: BE
+      description: These bits are the MSB of the NCO frequency word for NCO2 of DDC0
+        (band 1).
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC0_NCO3_LSB:
+      at:
+        offset: 0x1402c
+        byteOrder: BE
+      description: These bits are the LSB of the NCO frequency word for NCO3 of DDC0
+        (band 1).
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC0_NCO3_MSB:
+      at:
+        offset: 0x14030
+        byteOrder: BE
+      description: These bits are the MSB of the NCO frequency word for NCO3 of DDC0
+        (band 1).
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC0_NCO4_LSB:
+      at:
+        offset: 0x14034
+        byteOrder: BE
+      description: These bits are the LSB of the NCO frequency word for NCO4 of DDC0
+        (band 1).
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC0_NCO4_MSB:
+      at:
+        offset: 0x14038
+        byteOrder: BE
+      description: These bits are the MSB of the NCO frequency word for NCO4 of DDC0
+        (band 1).
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    NCO_SEL_PIN:
+      at:
+        offset: 0x1403c
+        byteOrder: BE
+      description: 0 = NCO selection through SPI (see address 0h10), 1 = NCO selection
+        through GPIO pins
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    NCO_SEL:
+      at:
+        offset: 0x14040
+        byteOrder: BE
+      description: These bits enable NCO selection through register setting.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    LMFC_RESET_MODE:
+      at:
+        offset: 0x14044
+        byteOrder: BE
+      description: These bits reset the configuration for all DDCs and NCOs.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC0_6DB_GAIN:
+      at:
+        offset: 0x14050
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = 6-dB digital gain is added
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC1_6DB_GAIN:
+      at:
+        offset: 0x14058
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = 6-dB digital gain is added
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DDC_DET_LAT:
+      at:
+        offset: 0x14078
+        byteOrder: BE
+      description: These bits ensure deterministic latency depending on the decimation
+        setting used
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    WBF_6DB_GAIN:
+      at:
+        offset: 0x1407c
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = 6-dB digital gain is added
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CUSTOM_PATTERN1_LSB:
+      at:
+        offset: 0x140cc
+        byteOrder: BE
+      description: These bits set the custom test pattern
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CUSTOM_PATTERN1_MSB:
+      at:
+        offset: 0x140d0
+        byteOrder: BE
+      description: These bits set the custom test pattern
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CUSTOM_PATTERN2_LSB:
+      at:
+        offset: 0x140d4
+        byteOrder: BE
+      description: These bits set the custom test pattern
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CUSTOM_PATTERN2_MSB:
+      at:
+        offset: 0x140d8
+        byteOrder: BE
+      description: These bits set the custom test pattern
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TEST_PATTERN_SEL:
+      at:
+        offset: 0x140dc
+        byteOrder: BE
+      description: These bits select the test pattern output on the channel.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TEST_PAT_RES:
+      at:
+        offset: 0x140e8
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = Reset the test pattern
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    TP_RES_EN:
+      at:
+        offset: 0x140e8
+        byteOrder: BE
+      description: 0 = Reset disabled, 1 = Reset enabled
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PKDET_EN:
+      at:
+        offset: 0x18000
+        byteOrder: BE
+      description: 0 = Power detector disabled, 1 = Power detector enabled
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BLKPKDET_LSB:
+      at:
+        offset: 0x18004
+        byteOrder: BE
+      description: This register specifies the block length in terms of number of
+        samples (S) used for peak power computation
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BLKPKDET_MSB:
+      at:
+        offset: 0x18008
+        byteOrder: BE
+      description: This register specifies the block length in terms of number of
+        samples (S) used for peak power computation
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BLKPKDET16:
+      at:
+        offset: 0x1800c
+        byteOrder: BE
+      description: This register specifies the block length in terms of number of
+        samples (S) used for peak power computation
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BLKTHHH:
+      at:
+        offset: 0x1801c
+        byteOrder: BE
+      description: These registers set the four different thresholds for the hysteresis
+        function threshold values from 0 to 256 (2TH), where 256 is equivalent to
+        the peak amplitude.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BLKTHHL:
+      at:
+        offset: 0x18020
+        byteOrder: BE
+      description: These registers set the four different thresholds for the hysteresis
+        function threshold values from 0 to 256 (2TH), where 256 is equivalent to
+        the peak amplitude.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BLKTHLH:
+      at:
+        offset: 0x18024
+        byteOrder: BE
+      description: These registers set the four different thresholds for the hysteresis
+        function threshold values from 0 to 256 (2TH), where 256 is equivalent to
+        the peak amplitude.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BLKTHLL:
+      at:
+        offset: 0x18028
+        byteOrder: BE
+      description: These registers set the four different thresholds for the hysteresis
+        function threshold values from 0 to 256 (2TH), where 256 is equivalent to
+        the peak amplitude.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DWELL_LSB:
+      at:
+        offset: 0x1802c
+        byteOrder: BE
+      description: DWELL time counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DWELL_MSB:
+      at:
+        offset: 0x18030
+        byteOrder: BE
+      description: DWELL time counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FILT0LPSEL:
+      at:
+        offset: 0x18034
+        byteOrder: BE
+      description: "0 = Use the output of the high comparators (HH and HL) as the\
+        \ input of the IIR filter, 1 = Combine the output of the high (HH and HL)\
+        \ and low (LH and LL) comparators to generate a 3-level input to the IIR filter\
+        \ (\u20131, 0, 1)"
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TIMECONST:
+      at:
+        offset: 0x18038
+        byteOrder: BE
+      description: These bits set the crossing detector time period
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FIL0THH_LSB:
+      at:
+        offset: 0x1803c
+        byteOrder: BE
+      description: Comparison thresholds for the crossing detector counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FIL0THH_MSB:
+      at:
+        offset: 0x18040
+        byteOrder: BE
+      description: Comparison thresholds for the crossing detector counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FIL0THL_LSB:
+      at:
+        offset: 0x18044
+        byteOrder: BE
+      description: Comparison thresholds for the crossing detector counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FIL0THL_MSB:
+      at:
+        offset: 0x18048
+        byteOrder: BE
+      description: Comparison thresholds for the crossing detector counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    IIR0_2BIT_EN:
+      at:
+        offset: 0x1804c
+        byteOrder: BE
+      description: 0 = Selects 1-bit output format, 1 = Selects 2-bit output format
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FIL1THH_LSB:
+      at:
+        offset: 0x18058
+        byteOrder: BE
+      description: Comparison thresholds for the crossing detector counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FIL1THH_MSB:
+      at:
+        offset: 0x1805c
+        byteOrder: BE
+      description: Comparison thresholds for the crossing detector counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FIL1THL_LSB:
+      at:
+        offset: 0x18060
+        byteOrder: BE
+      description: Comparison thresholds for the crossing detector counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FIL1THL_MSB:
+      at:
+        offset: 0x18064
+        byteOrder: BE
+      description: Comparison thresholds for the crossing detector counter
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    IIR1_2BIT_EN:
+      at:
+        offset: 0x18068
+        byteOrder: BE
+      description: 0 = Selects 1-bit output format, 1 = Selects 2-bit output format
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DWELLIIR_LSB:
+      at:
+        offset: 0x18074
+        byteOrder: BE
+      description: DWELL time counter for the IIR output comparators
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DWELLIIR_MSB:
+      at:
+        offset: 0x18078
+        byteOrder: BE
+      description: DWELL time counter for the IIR output comparators
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RMSDET_EN:
+      at:
+        offset: 0x18080
+        byteOrder: BE
+      description: 0 = Power detector disabled, 1 = Power detector enabled
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PWRDETACCU:
+      at:
+        offset: 0x18084
+        byteOrder: BE
+      description: These bits program the block length to be used for RMS power computation
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PWRDETH_LSB:
+      at:
+        offset: 0x18088
+        byteOrder: BE
+      description: The computed average power is compared against these high and low
+        thresholds
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PWRDETH_MSB:
+      at:
+        offset: 0x1808c
+        byteOrder: BE
+      description: The computed average power is compared against these high and low
+        thresholds
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PWRDETL_LSB:
+      at:
+        offset: 0x18090
+        byteOrder: BE
+      description: The computed average power is compared against these high and low
+        thresholds
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PWRDETL_MSB:
+      at:
+        offset: 0x18094
+        byteOrder: BE
+      description: The computed average power is compared against these high and low
+        thresholds
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RMS_2BIT_EN:
+      at:
+        offset: 0x1809c
+        byteOrder: BE
+      description: 0 = Selects 1-bit output format, 1 = Selects 2-bit output format
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    RESET_AGC:
+      at:
+        offset: 0x180ac
+        byteOrder: BE
+      description: 0 = Clear AGC reset, 1 = Set AGC reset
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    OUTSEL_GPIO1:
+      at:
+        offset: 0x180c8
+        byteOrder: BE
+      description: These bits set the function or signal for each GPIO pin.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    OUTSEL_GPIO2:
+      at:
+        offset: 0x180cc
+        byteOrder: BE
+      description: These bits set the function or signal for each GPIO pin.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    OUTSEL_GPIO3:
+      at:
+        offset: 0x180d0
+        byteOrder: BE
+      description: These bits set the function or signal for each GPIO pin.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    OUTSEL_GPIO4:
+      at:
+        offset: 0x180d4
+        byteOrder: BE
+      description: These bits set the function or signal for each GPIO pin.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    IODIR_GPIO4:
+      at:
+        offset: 0x180dc
+        byteOrder: BE
+      description: 0 = Input (for the NCO control), 1 = Output (for the AGC alarm
+        function)
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    IODIR_GPIO3:
+      at:
+        offset: 0x180dc
+        byteOrder: BE
+      description: 0 = Input (for the NCO control), 1 = Output (for the AGC alarm
+        function)
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    IODIR_GPIO2:
+      at:
+        offset: 0x180dc
+        byteOrder: BE
+      description: 0 = Input (for the NCO control), 1 = Output (for the AGC alarm
+        function)
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    IODIR_GPIO1:
+      at:
+        offset: 0x180dc
+        byteOrder: BE
+      description: 0 = Input (for the NCO control), 1 = Output (for the AGC alarm
+        function)
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    INSEL1:
+      at:
+        offset: 0x180e0
+        byteOrder: BE
+      description: These bits select which GPIO pin is used for the INSEL1 bit
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    INSEL0:
+      at:
+        offset: 0x180e0
+        byteOrder: BE
+      description: These bits select which GPIO pin is used for the INSEL0 bit.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TestPattern:
+      at:
+        offset: 0x0
+      name: TestPattern
+      description: Set the Digital bank Test Pattern mode
+      class: SequenceCommand
+    ################################################################################

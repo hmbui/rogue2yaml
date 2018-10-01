@@ -1,0 +1,76 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _AxiStreamMonitoring.yaml 
+
+
+AxiStreamMonitoring: &AxiStreamMonitoring
+  description: AxiStreamMonitoring Container
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    FrameRate:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Current Frame Rate
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    FrameRateMax:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Max Frame Rate
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    FrameRateMin:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: Min Frame Rate
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    Bandwidth:
+      at:
+        offset: 0x1c
+        byteOrder: BE
+      description: Current Bandwidth
+      class: IntField
+      sizeBits: 64
+      mode: RO
+    ################################################################################
+    BandwidthMax:
+      at:
+        offset: 0x24
+        byteOrder: BE
+      description: Max Bandwidth
+      class: IntField
+      sizeBits: 64
+      mode: RO
+    ################################################################################
+    BandwidthMin:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+      description: Min Bandwidth
+      class: IntField
+      sizeBits: 64
+      mode: RO
+    ################################################################################

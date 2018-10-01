@@ -1,0 +1,222 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _RtmDigitalDebug.yaml 
+
+
+RtmDigitalDebug: &RtmDigitalDebug
+  description: 
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    doutDisable:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: doutDisable
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    pllRst:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllRst
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################
+    los:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: los
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RO
+    ################################################################################
+    lol:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: lol
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RO
+    ################################################################################
+    locked:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: locked
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RO
+    ################################################################################
+    pllFrqTbl:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllFrqTbl
+      class: IntField
+      sizeBits: 16
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    pllFrqTblTri:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllFrqTblTri
+      class: IntField
+      sizeBits: 16
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    pllRate:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllRate
+      class: IntField
+      sizeBits: 16
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    pllRateTri:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllRateTri
+      class: IntField
+      sizeBits: 16
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    pllSFout:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllSFout
+      class: IntField
+      sizeBits: 24
+      mode: RW
+    ################################################################################
+    pllSFoutTri:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllSFoutTri
+      class: IntField
+      sizeBits: 24
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    pllBwSel:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllBwSel
+      class: IntField
+      sizeBits: 24
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    pllBwSelTri:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllBwSelTri
+      class: IntField
+      sizeBits: 24
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    pllFrqSel:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllFrqSel
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    pllFrqSelTri:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: pllFrqSelTri
+      class: IntField
+      sizeBits: 32
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    FpgaPllLocked:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: FpgaPllLocked
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    cntLos:
+      at:
+        offset: 0x80
+        byteOrder: BE
+      description: cntLos
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    cntLol:
+      at:
+        offset: 0x84
+        byteOrder: BE
+      description: cntLol
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    cntLocked:
+      at:
+        offset: 0x88
+        byteOrder: BE
+      description: cntLocked
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    cntPllRst:
+      at:
+        offset: 0x8c
+        byteOrder: BE
+      description: cntPllRst
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    cntRst:
+      at:
+        offset: 0xfc
+        byteOrder: BE
+      description: cntRst
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################

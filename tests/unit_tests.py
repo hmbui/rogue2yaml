@@ -6,7 +6,7 @@ from pydoc import locate
 import difflib
 
 from rogue2yaml import _generate_class_name_variations
-from yaml_converter import YamlConverter
+from rogue2yaml.yaml_converter import YamlConverter
 
 
 @pytest.mark.parametrize("rogue_filename, class_name", [

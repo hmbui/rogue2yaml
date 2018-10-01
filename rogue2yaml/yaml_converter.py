@@ -4,6 +4,9 @@ import os
 from collections import OrderedDict
 import yaml
 
+import setup_paths
+setup_paths.setup_paths()
+
 import pyrogue as pr
 from version import CPSW_YAML_SCHEMA_VERSION
 

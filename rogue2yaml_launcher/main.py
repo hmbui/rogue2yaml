@@ -4,20 +4,19 @@ import sys
 import os
 import shutil
 import json
-from collections import OrderedDict
+import traceback
 
 from pydoc import locate, ErrorDuringImport
-from arg_parser import ArgParser
 
-from version import VERSION, CPSW_YAML_SCHEMA_VERSION
+import rogue2yaml
+from rogue2yaml.arg_parser import ArgParser
 
-from converter_logging import logging
+from version import CPSW_YAML_SCHEMA_VERSION
+
+from rogue2yaml.converter_logging import logging
 logger = logging.getLogger(__name__)
 
-from setup_paths import setup_paths
-setup_paths()
-
-from yaml_converter import YamlConverter
+from rogue2yaml.yaml_converter import YamlConverter
 
 
 def main():
@@ -69,7 +68,7 @@ def _parse_arguments():
                         help="The directory that contains the output CPSW YAML files.")
 
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("--version", action="version", version=VERSION)
+    group.add_argument("--version", action="version", version=rogue2yaml.__version__)
     group.add_argument("--cpsw-schema-version", action="version", version=CPSW_YAML_SCHEMA_VERSION)
 
     args = parser.parse_args()
@@ -153,7 +152,7 @@ def _convert_files(output_file_dir, success_files, failure_files):
                     logger.info(failure_message)
                     output_file_found = True
 
-            if not output_file_found:
+            if not output_file_found and filename.endswith(".py"):
                 logger.info("Converting file '{0}'...".format(filename))
                 filename = filename[:-3]
                 class_name = filename
@@ -263,3 +262,4 @@ if __name__ == "__main__":
     except Exception as error:
         logger.error("Unexpected exception during the conversion process. Exception type: {0}. Exception: {1}"
                      .format(type(error), error))
+        traceback.print_exc()

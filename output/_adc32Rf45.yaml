@@ -1,0 +1,237 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _adc32Rf45.yaml 
+
+
+Adc32Rf45: &Adc32Rf45
+  description: Adc32Rf45 Module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    RESET:
+      at:
+        offset: 0x0
+      name: RESET
+      description: Send 0x81 value to reset the device
+      class: SequenceCommand
+    ################################################################################
+    HW_RST:
+      at:
+        offset: 0x3c000
+        byteOrder: BE
+      description: Hardware Reset
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    PDN_SYSREF:
+      at:
+        offset: 0x1c080
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = SYSREF input capture buffer is powered
+        down and further SYSREF input pulses are ignored
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    PDN_CHB:
+      at:
+        offset: 0x1c080
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = Channel B is powered down
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    GLOBAL_PDN:
+      at:
+        offset: 0x1c080
+        byteOrder: BE
+      description: 0 = Normal operation, 1 = Global power-down enabled
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    INCR_CM_IMPEDANCE:
+      at:
+        offset: 0x1c0c8
+        byteOrder: BE
+      description: 0 = VCM buffer directly drives the common point of biasing resistors,
+        1 = VCM buffer drives the common point of biasing resistors with > 5 kOhm
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    AlwaysWrite0x1_A:
+      at:
+        offset: 0x1c0e4
+        byteOrder: BE
+      description: Always set this bit to 1
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: WO
+    ################################################################################
+    AlwaysWrite0x1_B:
+      at:
+        offset: 0x1c0e4
+        byteOrder: BE
+      description: Always set this bit to 1
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: WO
+    ################################################################################
+    PDN_CHB_EN:
+      at:
+        offset: 0x1c0e4
+        byteOrder: BE
+      description: This bit enables the power-down control of channel B through the
+        SPI in register 20h: 0 = PDN control disabled, 1 = PDN control enabled
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    SYNC_TERM_DIS:
+      at:
+        offset: 0x1c0e4
+        byteOrder: BE
+      description: 0 = On-chip, 100-Ohm termination enabled, 1 = On-chip, 100-Ohm
+        termination disabled
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SYSREF_DEL_EN:
+      at:
+        offset: 0x1c0f0
+        byteOrder: BE
+      description: 0 = SYSREF delay disabled, 1 = SYSREF delay enabled through register
+        settings [3Ch (bits 1-0), 5Ah (bits 7-5)]
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    SYSREF_DEL_HI:
+      at:
+        offset: 0x1c0f0
+        byteOrder: BE
+      description: When the SYSREF delay feature is enabled (3Ch, bit 6) the delay
+        can be adjusted in 25-ps steps; the first step is 175 ps. The PVT variation
+        of each 25-ps step is +/-10 ps. The 175-ps step is +/-50 ps
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    JESD_OUTPUT_SWING:
+      at:
+        offset: 0x1c0f4
+        byteOrder: BE
+      description: These bits select the output amplitude (VOD) of the JESD transmitter
+        for all lanes.
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SYSREF_DEL_LO:
+      at:
+        offset: 0x1c168
+        byteOrder: BE
+      description: When the SYSREF delay feature is enabled (3Ch, bit 6) the delay
+        can be adjusted in 25-ps steps; the first step is 175 ps. The PVT variation
+        of each 25-ps step is +/-10 ps. The 175-ps step is +/-50 ps
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    SEL_SYSREF_REG:
+      at:
+        offset: 0x1c15c
+        byteOrder: BE
+      description: 0 = SYSREF is logic low, 1 = SYSREF is logic high
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    ASSERT_SYSREF_REG:
+      at:
+        offset: 0x1c15c
+        byteOrder: BE
+      description: 0 = SYSREF is asserted by device pins, 1 = SYSREF can be asserted
+        by the ASSERT SYSREF REG register bit
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: RW
+    ################################################################################
+    SYNCB_POL:
+      at:
+        offset: 0x1c160
+        byteOrder: BE
+      description: 0 = Polarity is not inverted, 1 = Polarity is inverted
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    SLOW_SP_EN1:
+      at:
+        offset: 0x200fc
+        byteOrder: BE
+      description: 0 = ADC sampling rates are faster than 2.5 GSPS, 1 = ADC sampling
+        rates are slower than 2.5 GSPS
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    SLOW_SP_EN2:
+      at:
+        offset: 0x20108
+        byteOrder: BE
+      description: 0 = ADC sampling rates are faster than 2.5 GSPS, 1 = ADC sampling
+        rates are slower than 2.5 GSPS
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    CH:
+      <<: *CH
+      at:
+        offset: 0x0
+        nelms: 2
+    ################################################################################
+    Init:
+      at:
+        offset: 0x0
+      name: Init
+      description: Device Initiation
+      class: SequenceCommand
+    ################################################################################
+    DigRst:
+      at:
+        offset: 0x0
+      name: DigRst
+      description: Digital Reset
+      class: SequenceCommand
+    ################################################################################

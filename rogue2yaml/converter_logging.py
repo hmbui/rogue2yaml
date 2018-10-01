@@ -1,4 +1,12 @@
+import os
 import logging
+
+try:
+    os.makedirs("logs")
+except os.error as err:
+    # It's OK if the log directory exists. This is to be compatible with Python 2.7
+    if err.errno != os.errno.EEXIST:
+        raise err
 
 logging.basicConfig(level=logging.INFO, filename="logs/rogue2yaml.log",
                     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")

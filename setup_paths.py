@@ -1,7 +1,7 @@
 import os
 import sys
 
-from converter_logging import logging
+from rogue2yaml.converter_logging import logging
 logger = logging.getLogger(__name__)
 
 
@@ -13,4 +13,3 @@ def setup_paths():
         return
 
     sys.path.insert(1, rogue_2_8_3)
-

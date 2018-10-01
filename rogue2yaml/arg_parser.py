@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from converter_logging import logging
+from rogue2yaml.converter_logging import logging
 logger = logging.getLogger(__name__)
 
 

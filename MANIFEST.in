@@ -1,0 +1,2 @@
+include versioneer.py
+include rogue2yaml/_version.py

@@ -1,0 +1,213 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once TimingFrameRx.yaml 
+
+
+TimingFrameRx: &TimingFrameRx
+  description: Status of timing frame reception
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    sofCount:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Start of frame count
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    eofCount:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: End of frame count
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    FidCount:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Valid frame count
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    CrcErrCount:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: CRC error count
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxClkCount:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Recovered clock count div 16
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxRstCount:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Receive link reset count
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxDecErrCount:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: Receive 8b/10b decode error count
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxDspErrCount:
+      at:
+        offset: 0x1c
+        byteOrder: BE
+      description: Receive disparity error count
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    RxCountReset:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Reset receive counters
+      class: IntField
+      sizeBits: 8
+      mode: WO
+    ################################################################################
+    RxLinkUp:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Receive link status
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RO
+    ################################################################################
+    RxPolarity:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Invert receive link polarity
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    RxReset:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Reset receive link
+      class: IntField
+      sizeBits: 8
+      lsBit: 3
+      mode: WO
+    ################################################################################
+    ClkSel:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Select LCLS-I/LCLS-II Timing
+      class: IntField
+      sizeBits: 8
+      lsBit: 4
+      mode: RW
+    ################################################################################
+    RxDown:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Rx down latch status
+      class: IntField
+      sizeBits: 8
+      lsBit: 5
+      mode: RW
+    ################################################################################
+    BypassRst:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Buffer bypass reset status
+      class: IntField
+      sizeBits: 8
+      lsBit: 6
+      mode: RW
+    ################################################################################
+    MsgDelay:
+      at:
+        offset: 0x24
+        byteOrder: BE
+      description: LCLS-II timing frame pipeline delay (186MHz clks)
+      class: IntField
+      sizeBits: 24
+      mode: RW
+    ################################################################################
+    TxClkCount:
+      at:
+        offset: 0x28
+        byteOrder: BE
+      description: Transmit clock counter div 16
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    BypassDoneCount:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+      description: Buffer bypass done count
+      class: IntField
+      sizeBits: 16
+      mode: RO
+    ################################################################################
+    BypassResetCount:
+      at:
+        offset: 0x2c
+        byteOrder: BE
+      description: Buffer bypass reset count
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    C_RxReset:
+      at:
+        offset: 0x0
+      name: C_RxReset
+      description: Reset Rx Link
+      class: SequenceCommand
+    ################################################################################
+    ClearRxCounters:
+      at:
+        offset: 0x0
+      name: ClearRxCounters
+      description: Clear the Rx status counters
+      class: SequenceCommand
+    ################################################################################

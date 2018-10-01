@@ -1,0 +1,120 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _rtmCryoDet.yaml 
+
+
+RtmCryoDet: &RtmCryoDet
+  description: RtmCryoDet Board
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    LowCycle:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: CPLDs clock: low cycle duration (zero inclusive)
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    HighCycle:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: CPLDs clock: high cycle duration (zero inclusive)
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    KRelay:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: kRelay bus from CPLD
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    RampMaxCnt:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Internal Ramps maximum count
+      class: IntField
+      sizeBits: 32
+      mode: RW
+    ################################################################################
+    SelectRamp:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Select Ramp to the CPLD
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    EnableRampTrigger:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Enables the Start Ramp Trigger pulses
+      class: IntField
+      sizeBits: 8
+      lsBit: 1
+      mode: RW
+    ################################################################################
+    RampStartMode:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: 0x0 = internal start ramp pulses, 0x1 = external start ramp pulses
+      class: IntField
+      sizeBits: 8
+      lsBit: 2
+      mode: RW
+    ################################################################################
+    PulseWidth:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: Start Ramp Pulse width to the CPLD
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    DebounceWidth:
+      at:
+        offset: 0x1c
+        byteOrder: BE
+      description: Debounce width from the LEMO[1]
+      class: IntField
+      sizeBits: 16
+      mode: RW
+    ################################################################################
+    SpiCryo:
+      <<: *SpiCryo
+      at:
+        offset: 0x100000
+    ################################################################################
+    RtmSpiMax:
+      <<: *RtmSpiMax
+      at:
+        offset: 0x200000
+    ################################################################################
+    RtmSpiSr:
+      <<: *RtmSpiSr
+      at:
+        offset: 0x300000
+    ################################################################################

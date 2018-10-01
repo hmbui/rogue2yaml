@@ -1,0 +1,47 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once AxisBramRingBuffer.yaml 
+
+
+AxisBramRingBuffer: &AxisBramRingBuffer
+  description: Waveform Data Acquisition Module
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    Tdest:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: AXI stream TDEST
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    CmdSwTrig:
+      at:
+        offset: 0xf8
+      name: CmdSwTrig
+      description: Command for Software Trigger
+      class: SequenceCommand
+    ################################################################################
+    Enable:
+      at:
+        offset: 0xfc
+        byteOrder: BE
+      description: Enable for triggers
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################

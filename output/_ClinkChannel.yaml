@@ -1,0 +1,142 @@
+##############################################################################
+## This file is part of 'SLAC Firmware Standard Library'.
+## It is subject to the license terms in the LICENSE.txt file found in the 
+## top-level directory of this distribution and at: 
+##    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html. 
+## No part of 'SLAC Firmware Standard Library', including this file, 
+## may be copied, modified, propagated, or distributed except according to 
+## the terms contained in the LICENSE.txt file. 
+############################################################################## 
+#schemaversion 3.0.0 
+#once _ClinkChannel.yaml 
+
+
+ClinkChannel: &ClinkChannel
+  description: CameraLink channel
+  configPrio: 1
+  class: MMIODev
+  size: 0x8
+  ##########
+  children:
+  ##########
+    ################################################################################
+    LinkMode:
+      at:
+        offset: 0x0
+        byteOrder: BE
+      description: Link mode control for camera link lanes
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DataMode:
+      at:
+        offset: 0x4
+        byteOrder: BE
+      description: Data mode
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    FrameMode:
+      at:
+        offset: 0x8
+        byteOrder: BE
+      description: Frame mode
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    TapCount:
+      at:
+        offset: 0xc
+        byteOrder: BE
+      description: Frame mode
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    DataEn:
+      at:
+        offset: 0x10
+        byteOrder: BE
+      description: Data enable
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    BaudRate:
+      at:
+        offset: 0x14
+        byteOrder: BE
+      description: Baud rate
+      class: IntField
+      sizeBits: 24
+      mode: RW
+    ################################################################################
+    SwControlValue:
+      at:
+        offset: 0x18
+        byteOrder: BE
+      description: Software camera control bit values
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    SwControlEn:
+      at:
+        offset: 0x1c
+        byteOrder: BE
+      description: Software camera control bit enable mask for lane A
+      class: IntField
+      sizeBits: 8
+      mode: RW
+    ################################################################################
+    Running:
+      at:
+        offset: 0x20
+        byteOrder: BE
+      description: Camera link lane running status
+      class: IntField
+      sizeBits: 8
+      mode: RO
+    ################################################################################
+    FrameCount:
+      at:
+        offset: 0x24
+        byteOrder: BE
+      description: Frame counter
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    DropCount:
+      at:
+        offset: 0x28
+        byteOrder: BE
+      description: Drop counter
+      class: IntField
+      sizeBits: 32
+      mode: RO
+    ################################################################################
+    SendString:
+      at:
+        offset: 0x0
+      name: SendString
+      description: Send a command string
+      class: SequenceCommand
+    ################################################################################
+    SendEscape:
+      at:
+        offset: 0x0
+      name: SendEscape
+      description: Send an escape charactor
+      class: SequenceCommand
+    ################################################################################
+    SendGcp:
+      at:
+        offset: 0x0
+      name: SendGcp
+      description: Send gcp command
+      class: SequenceCommand
+    ################################################################################
