@@ -6,6 +6,5 @@ export MODULEPATH=/usr/share/Modules/modulefiles:/etc/modulefiles:/afs/slac.stan
 module load cmake-3.9.4-gcc-4.9.4-ofjqova
 source /afs/slac.stanford.edu/g/reseng/python/3.6.1/settings.sh
 source /afs/slac.stanford.edu/g/reseng/boost/1.64.0/settings.sh
-export ROGUE2YAML_ROGUE_2_8_3=/afs/slac.stanford.edu/g/lcls/vol9/package/pyrogue/rogue/v2.8.3/python/
 
 echo Done!
