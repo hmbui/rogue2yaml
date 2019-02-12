@@ -20,7 +20,7 @@ and then build rogue according to the [rogue build instructions](https://github.
 Now, clone the Rogue2Yaml utility repo:
 ```sh
 git clone https://github.com/slaclab/rogue2yaml.git
-pip install .[all]
+pip install .
 ```
 
 ## Running Rogue2Yaml
